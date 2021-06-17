@@ -4,7 +4,12 @@ const { User } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth.js');
 
 const router = require('express').Router();
+const sessionRouter = require('./session.js');
+const usersRouter = require('./users.js');
 
+router.use('/session', sessionRouter);
+
+router.use('/users', usersRouter);
 
 //TEST ROUTES FOR AUTH USER, RESTORE USER, & REQIUIRE AUTH
 router.get('/set-token-cookie', asyncHandler(async (req, res) => {
