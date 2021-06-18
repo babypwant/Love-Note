@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.TEXT
   }, {});
   Note.associate = function (models) {
-    Note.belongsTo(model.Notebook, { foreignKey: 'notebookId' })
+    Note.belongsTo(models.Notebook, { foreignKey: 'notebookId' })
   };
   return Note;
 };
