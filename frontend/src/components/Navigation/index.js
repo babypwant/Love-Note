@@ -15,9 +15,10 @@ function Navigation({ isLoaded }) {
     } else {
         sessionLinks = (
             <>
-
-                <NavLink to="/login">Log In</NavLink>
-                <NavLink to="/signup">Sign Up</NavLink>
+                <div>
+                    <NavLink to="/login">Log In</NavLink>
+                    <NavLink to="/signup">Sign Up</NavLink>
+                </div>
             </>
         );
     }
@@ -26,7 +27,7 @@ function Navigation({ isLoaded }) {
 
         <ul className="topnav">
             <li>
-                <i class="fab fa-soundcloud"></i>
+                <i class="fab fa-evernote"></i>
                 <NavLink exact to="/">Home</NavLink>
                 {isLoaded && sessionLinks}
             </li>

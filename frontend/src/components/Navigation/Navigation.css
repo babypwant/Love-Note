@@ -1,28 +1,9 @@
 /*
 come back to css
 */
-body {
-    margin:50px 10px; padding:10px;
-    text-align:center;
-    align:center;
-}
 
-label {
- text-align: right;
- width: 75px;
- padding-right: 20px;
-}
-
-.header {
-    padding: 60px;
-    text-align: center;
-    background: #1abc9c;
-    color: white;
-    font-size: 30px;
-  }
-
-form {
-    display: inline-block;
+html{
+  background-image: url('../../images/sitebackground.png');
 }
 
 ul.topnav {

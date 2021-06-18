@@ -1,32 +1,98 @@
-/*
-come back to css
-*/
-
-
-body {
-    align-items: center;
-    text-align: center;
-    padding: auto;
-    border: auto;
+* {
+    box-sizing: border-box;
 }
-form {
+
+
+.signup-form {
+    width: 100%;
+    height: 200%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    height:400px;
+    margin-top: 100px;
+}
+
+.form-wrapper {
+    background-image: url('../../images/formbackground.jpg');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 400px;
-    display: inline-block;
-    color:white;
-    background-color: black;
-}
-label, input {
+    height: 600px;
+    border-radius: 30px;
+    background-size: 600% 100%;
+    animation: gradient 20s linear infinite;
+    animation-direction: alternate;
+    opacity: 0.9;
+    box-shadow: 2px 2px 10px 5px #555;
+    margin-top: 300px;
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 100%;
+    }
+  }
+
+  .form-div {
+    padding-bottom: 30px;
+    margin-bottom: 8px;
+  }
+
+.signup-label {
     display: block;
-}
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: bold;
+  }
 
-label {
+  .signup-input {
+    /* align-items: flex-start; */
+    padding: 5px 5px;
+    width: 250px;
+    border-radius: 8px;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0);
+  }
+
+  .signup-input {
+    /* align-items: flex-start; */
+    padding: 5px 5px;
+    width: 250px;
+    border-radius: 8px;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0);
+  }
+  
+  .signup-input:focus {
+    outline: none;
+    border: 1px solid #0e1d26;
+  }
+  
+  .btn {
+    border: none;
+    background: #333;
+    color: #ffffff;
+    font-weight: 100;
+    padding: 12px 20px;
+    text-transform: uppercase;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 5px;
     margin-bottom: 20px;
-}
-
-li{
-    list-style: none;
-}
-
-input { margin-bottom: 10px; }
+    transition: color 0.3s, background 0.3s, border 0.3s;
+  }
+  
+  .btn:focus,
+  .btn:hover {
+    outline: none;
+    color: #2d8cc7;
+    background: #b3eedf;
+    border: 1px solid #0e1d26;
+  }
+  
