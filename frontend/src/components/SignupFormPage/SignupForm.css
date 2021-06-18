@@ -1,3 +1,32 @@
 /*
 come back to css
 */
+
+
+body {
+    align-items: center;
+    text-align: center;
+    padding: auto;
+    border: auto;
+}
+form {
+    align-items: center;
+    height:400px;
+    width: 400px;
+    display: inline-block;
+    color:white;
+    background-color: black;
+}
+label, input {
+    display: block;
+}
+
+label {
+    margin-bottom: 20px;
+}
+
+li{
+    list-style: none;
+}
+
+input { margin-bottom: 10px; }
