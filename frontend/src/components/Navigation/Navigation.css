@@ -2,30 +2,47 @@
 come back to css
 */
 
-html{
+html, body{
   background-image: url('../../images/sitebackground.png');
+  margin:0px;
+  padding:0px;
+}
+  .navbar-wrapper {
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+  }
+
+  .navbar-left,
+.navbar-right {
+  display: inline-block;
+  width: 250px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.navbar-left {
+  margin-left: 15px;
+}
+.navbar-right {
+  margin-right: 15px;
+}
+.pipechar {
+  pointer-events: none;
 }
 
-ul.topnav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  ul.topnav li {float: left;}
-  
-  ul.topnav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 0px 16px 10px 20px;
-    text-decoration: none;
-  }
-  
-  ul.topnav li a:hover:not(.active) {background-color: #111;}
-  
-  ul.topnav li a.active {background-color: #04AA6D;}
-  
-  ul.topnav li.right {float: right;}
+.navbar-btn {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  transition: color 0.5s, border-bottom 0.5s;
+}
+
+.navbar-btn:hover {
+  color: #eaeff2;
+  border-bottom: 1px solid #eaeff2;
+}

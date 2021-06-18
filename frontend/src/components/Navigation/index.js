@@ -15,23 +15,22 @@ function Navigation({ isLoaded }) {
     } else {
         sessionLinks = (
             <>
-                <div>
-                    <NavLink to="/login">Log In</NavLink>
-                    <NavLink to="/signup">Sign Up</NavLink>
+                <div className='navbar-right'>
+                    <NavLink to="/login" className='navbar-btn'>Log In</NavLink>
+                    <NavLink to="/signup" className='navbar-btn'>Sign Up</NavLink>
                 </div>
             </>
         );
     }
 
     return (
-
-        <ul className="topnav">
-            <li>
+        <div className='navbar-wrapper'>
+            <div className='navbar-left'>
                 <i class="fab fa-evernote"></i>
-                <NavLink exact to="/">Home</NavLink>
+                <NavLink exact to="/" className='navbar-btn fas fa-home'>Home</NavLink>
                 {isLoaded && sessionLinks}
-            </li>
-        </ul>
+            </div>
+        </div>
     );
 }
 
