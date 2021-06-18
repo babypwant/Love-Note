@@ -36,6 +36,11 @@ function SignupFormPage() {
                     <ul>
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
+                    <div>
+                        <label className='title'>
+                            Sign Up
+                        </label>
+                    </div>
                     <div className='form-div'>
 
                         <label className='signup-label'>
@@ -86,7 +91,7 @@ function SignupFormPage() {
                             />
                         </label>
                     </div>
-                    <button className='btn' type="submit">Sign Up</button>
+                    <button className='btn' type="submit">Talk to Karl !</button>
                 </div>
             </form>
         </body >
