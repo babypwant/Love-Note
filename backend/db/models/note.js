@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.TEXT,
     content: DataTypes.TEXT
   }, {});
-  Note.associate = function(models) {
-    // associations can be defined here
+  Note.associate = function (models) {
+    Note.belongsTo(model.Notebook, { foreignKey: 'notebookId' })
   };
   return Note;
 };
