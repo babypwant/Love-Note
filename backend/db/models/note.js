@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Note.associate = function (models) {
     Note.belongsTo(models.Notebook, { foreignKey: 'notebookId' })
+    Note.hasOne(models.User, { foreignKey: 'userId' })
   };
   return Note;
 };
