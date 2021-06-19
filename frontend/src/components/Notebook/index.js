@@ -11,7 +11,7 @@ function Notebook({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             //<tag>
-            <h2></h2>
+            <h2>Hello</h2>
         );
     } else {
         return true
@@ -19,7 +19,7 @@ function Notebook({ isLoaded }) {
 
     return (
         <div>
-            <h2> hello</h2>
+            {sessionLinks}
         </div>
     );
 }
