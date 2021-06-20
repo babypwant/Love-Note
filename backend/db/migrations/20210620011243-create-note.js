@@ -1,24 +1,23 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Reminders', {
+    return queryInterface.createTable('Notes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
+      name: {
+        allowNull: false,
+        type: Sequelize.STRING(50)
+      },
+      notebookId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { Model: 'Users' }
+        references: { model: 'Notebooks' }
       },
-      notesId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { Model: 'Notes' }
-      },
-      content: {
+      description: {
         type: Sequelize.TEXT
       },
       createdAt: {
@@ -32,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Reminders');
+    return queryInterface.dropTable('Notes');
   }
 };
