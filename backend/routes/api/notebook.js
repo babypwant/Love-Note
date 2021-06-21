@@ -25,7 +25,7 @@ router.post('/', asyncHandler(async (req, res) => {
     await setTokenCookie(res, user);
 
     return res.json({
-        notebook,
+        notebook
     });
 }),
 );

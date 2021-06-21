@@ -32,7 +32,10 @@ function App() {
           </Route>
         </Switch>
       )}
-      < Notebook />
+      <Route path='/notebooks'>
+        <Notebook />
+      </Route>
+
     </>
   );
 }
