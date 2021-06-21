@@ -8,6 +8,8 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import * as sessionActions from './store/session';
 import { restoreCSRF, csrfFetch } from './store/csrf';
+import * as userActions from './store/users'
+import * as notebookActions from './store/notebooks'
 
 
 import configureStore from './store';
@@ -20,6 +22,8 @@ if (process.env.NODE_ENV !== 'production') {
   window.csrfFetch = csrfFetch;
   window.store = store;
   window.sessionActions = sessionActions;
+  window.userActions = userActions;
+  window.notebookActions = notebookActions;
 }
 
 function Root() {
