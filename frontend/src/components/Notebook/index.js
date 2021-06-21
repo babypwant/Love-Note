@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
-import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { useEffect } from 'react';
 import './Notebook.css';
+import { getNotebooks } from '../../store/notebooks'
 
-function Notebook({ isLoaded }) {
+//remember to make a hidden field with userId set from state
+//so we can assoc. userId into our table
+
+function Notebook() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.users);
+    const notebooks = useSelector(state => Object.values(state.notebooks))
     let sessionLinks;
+
+    useEffect(() => {
+        dispatch(getNotebooks());
+    }, [dispatch])
+
     if (sessionUser) {
         sessionLinks = (
-            //<tag>
-            <h2>Hello</h2>
+            <form>
+                <div>
+                    <label>Notebook Name: </label>
+                    <h2>hello</h2>
+                </div>
+            </form>
         );
     } else {
         return true
