@@ -32,7 +32,7 @@ function App() {
           </Route>
         </Switch>
       )}
-      < Notebook isLoaded={isLoaded} />
+      < Notebook />
     </>
   );
 }
