@@ -7,7 +7,7 @@ form {
     display: flex;
     flex-direction: column;
     display: inline-block;
-    color: white;
+    color: rgb(245, 212, 212);
     margin-top: 60px;
 }
 .btn-div{

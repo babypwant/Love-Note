@@ -1,0 +1,25 @@
+.logged-out-div {
+    position: relative;
+    display: 'block',
+}
+
+.test {
+    background-image: url('../../images/possible-background-1.gif');
+    color: white;
+    height: 100%;
+    margin-top:0;
+}
+
+.test-2 {
+    background-color: blue;
+}
+
+h2 {
+    color:white;
+}
+html {
+    min-height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

@@ -83,12 +83,6 @@ function Notebook() {
     }
 
 
-    //Possible useful code to get all notebooks at home page
-    // {
-    //     notebooks.map(notebook => {
-    //         return <h2>{notebook.name}</h2>
-    //     })
-    // }
 
     return (
         <div>

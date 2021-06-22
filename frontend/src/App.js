@@ -5,11 +5,15 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Notebook from './components/Notebook'
 import Note from "./components/Note";
+import Home from "./components/Homepage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+
+
+///Backgrounds
 import notebookBackground from '../src/images/LzRdnr.jpg'
-
-
+import homeBackground from '../src/images/possible-background-1.gif'
+///
 
 function App() {
   const dispatch = useDispatch();
@@ -46,8 +50,8 @@ function App() {
       <Route path='/note'>
         <Note />
       </Route>
-      <Route path='/home'>
-        
+      <Route path='/'>
+        <Home />
       </Route>
     </>
   );
