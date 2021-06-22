@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import './Notebook.css';
+import './Note.css';
 import { getNotebooks } from '../../store/notebooks'
 import { getUsers } from '../../store/users'
 
@@ -14,7 +14,7 @@ when I refresh my sessions user information returns null, why?
 works only on the first instance of loading the page
 */
 
-function Notebook() {
+function Note() {
     const [notebook, setNotebook] = useState('')
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => Object.values(state.notebooks))
@@ -68,4 +68,4 @@ function Notebook() {
     );
 }
 
-export default Notebook;
+export default Note;
