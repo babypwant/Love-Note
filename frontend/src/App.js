@@ -4,8 +4,10 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Notebook from './components/Notebook'
+import Note from "./components/Note";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+
 
 
 function App() {
@@ -35,7 +37,9 @@ function App() {
       <Route path='/notebooks'>
         <Notebook />
       </Route>
-
+      <Route path='/note'>
+        <Note />
+      </Route>
     </>
   );
 }

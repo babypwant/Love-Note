@@ -13,6 +13,7 @@ function Navigation({ isLoaded }) {
             <>
                 <ProfileButton user={sessionUser} />
                 <NavLink to='/notebooks'>Create a Notebook</NavLink>
+                <NavLink to='/note'>Write a note</NavLink>
             </>
         );
     } else {
