@@ -16,6 +16,7 @@ works only on the first instance of loading the page
 
 function Notebook() {
     const [notebook, setNotebook] = useState('')
+    const [userId, setUser] = useState(0)
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => Object.values(state.notebooks))
     const dispatch = useDispatch();
@@ -24,10 +25,11 @@ function Notebook() {
     let notebookList;
     useEffect(() => {
         dispatch(getNotebooks());
-        dispatch(getUsers())
-        console.log(sessionUser)
-    }, [dispatch])
-
+        if (sessionUser) {
+            const currUser = Object.values(sessionUser)
+            setUser(sessionUser.id)
+        }
+    }, [dispatch, sessionUser])
 
     if (notebooks) {
         notebookList = (
@@ -36,7 +38,7 @@ function Notebook() {
                 <input
                     name='userId'
                     type='hidden'
-                    value={0}
+                    value={userId}
                 ></input>
                 <div>
                     <input
@@ -46,6 +48,9 @@ function Notebook() {
                         onChange={(e) => setNotebook(e.target.value)}
                         required
                     />
+                </div>
+                <div>
+                    <button>| Create |</button>
                 </div>
             </form>
         );
@@ -62,9 +67,11 @@ function Notebook() {
     // }
 
     return (
-        <div>
-            {notebookList}
-        </div>
+        <html className='create-notebook-page'>
+            <div>
+                {notebookList}
+            </div>
+        </html>
     );
 }
 
