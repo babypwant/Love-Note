@@ -7,6 +7,7 @@ import Notebook from './components/Notebook'
 import Note from "./components/Note";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import notebookBackground from '../src/images/LzRdnr.jpg'
 
 
 
@@ -35,10 +36,18 @@ function App() {
         </Switch>
       )}
       <Route path='/notebooks'>
-        <Notebook />
+        <div style={{
+          height: '100%',
+          backgroundImage: `url(${notebookBackground})`
+        }}>
+          <Notebook />
+        </div>
       </Route>
       <Route path='/note'>
         <Note />
+      </Route>
+      <Route path='/home'>
+        
       </Route>
     </>
   );

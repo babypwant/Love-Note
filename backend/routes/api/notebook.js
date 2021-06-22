@@ -7,7 +7,18 @@ const { Notebook } = require('../../db/models')
 const csrf = require('csurf');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const cookieParser = require('cookie-parser');
+const { handleValidationErrors } = require('../../utils/validation');
 
+
+const notebookValidators = [
+    check("name")
+        .exists({ checkFalsy: true })
+        .withMessage("List name can't be empty."),
+    check('userId')
+        .exists({ checkFalsy: true })
+        .withMessage("userId can't be empty."),
+    handleValidationErrors,
+];
 
 router.get('/', asyncHandler(async (req, res,) => {
     const notebooks = await Notebook.findAll();
@@ -15,18 +26,18 @@ router.get('/', asyncHandler(async (req, res,) => {
 }));
 
 
-router.post('/', asyncHandler(async (req, res) => {
-    const { name, description } = req.body;
-    const notebook = await Notebook.db.build({
-        name: name,
-        description, description,
-    });
-
-    await setTokenCookie(res, user);
+router.post('/', notebookValidators, asyncHandler(async (req, res) => {
+    const { name, description, userId } = req.body;
+    const notebook = await Notebook.notebookCreate({
+        name, description, userId
+    })
 
     return res.json({
-        notebook
+        notebook,
     });
 }),
 );
+
+
+
 module.exports = router;
