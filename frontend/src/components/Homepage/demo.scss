@@ -1,0 +1,29 @@
+.logged-out-div {
+    position: relative;
+    display: 'block',
+}
+
+.test {
+    background-image: url('../../images/possible-background-1.gif');
+    display: flex;
+    flex-direction: column;
+    display: inline-block;
+    color: white;
+    margin-top: 60px;
+}
+
+.test-2 {
+    background-image: url('../../images//LzRdnr.jpg');
+    display: flex;
+    flex-direction: column;
+    display: inline-block;
+    color: black;
+    margin-top: 60px;
+}
+
+html {
+    min-height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
