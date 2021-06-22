@@ -1,6 +1,7 @@
 import { csrfFetch } from './csrf';
 
 const SET_USER = 'session/setUser';
+const SET_NOTEBOOK = 'session/setNotebook'
 const REMOVE_USER = 'session/removeUser';
 const REMOVE_NOTEBOOK = 'session/removeNotebook'
 
@@ -17,12 +18,23 @@ const removeUser = () => {
     };
 };
 
+const setNotebook = (notebook) => {
+    return {
+        type: SET_NOTEBOOK,
+        payload: notebook,
+    };
+};
+
 const removeNotebook = () => {
     return {
         type: REMOVE_NOTEBOOK
     }
 }
 
+
+/*
+USER ACTIONS
+*/
 export const login = (user) => async (dispatch) => {
     const { credential, password } = user;
     const response = await csrfFetch('/api/session', {
@@ -66,6 +78,10 @@ export const logout = () => async (dispatch) => {
     return response;
 };
 
+/*
+NOTEBOOK ACTIONS
+*/
+
 export const logoutNotebook = () => async (dispatch) => {
     const response = await csrfFetch('/api/session', {
         method: 'DELETE',
@@ -73,6 +89,22 @@ export const logoutNotebook = () => async (dispatch) => {
     dispatch(removeNotebook());
     return response;
 }
+
+export const notebookCreate = (notebook) => async (dispatch) => {
+    const { name, userId, description } = notebook;
+    const response = await csrfFetch("/api/notebooks", {
+        method: "POST",
+        body: JSON.stringify({
+            name,
+            userId,
+            description,
+        }),
+    });
+    const data = await response.json();
+    dispatch(setNotebook(data.notebook));
+    return response;
+};
+
 
 const initialState = { user: null };
 

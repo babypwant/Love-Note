@@ -2,11 +2,11 @@
 come back to css
 */
 
-/* html, body{
-  background-image: url('../../images/sitebackground.png');
+/* background-image: url('../../images/sitebackground.png'); */
+html, body{
   margin:0px;
   padding:0px;
-} */
+}
   .navbar-wrapper {
     display: flex;
     height: 40px;

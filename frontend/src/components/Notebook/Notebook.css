@@ -2,11 +2,14 @@
 Come back to css
 */
 
-body{
-    background-image: url('../../images//68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f712d615578336f4d7a31394c34773d3d2d39353134363.gif');
-    margin:0px;
-    padding:0px;
-  }
+
 form {
+    display: flex;
+    flex-direction: column;
     display: inline-block;
+    color: white;
+    margin-top: 60px;
+}
+.btn-div{
+    margin-top: 60px;
 }

@@ -2,56 +2,80 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import './Notebook.css';
+import * as sessionActions from "../../store/session";
 import { getNotebooks } from '../../store/notebooks'
-import { getUsers } from '../../store/users'
-
-//remember to make a hidden field with userId set from state
-//so we can assoc. userId into our table
+import { Redirect, useHistory } from 'react-router-dom'
 
 //Main bug to fix for tommorrow:
-/*
-when I refresh my sessions user information returns null, why?
-works only on the first instance of loading the page
-*/
+
+//history.push is not redirecting after I submit, maybe cant be used in a func?
 
 function Notebook() {
-    const [notebook, setNotebook] = useState('')
+    const [name, setname] = useState('')
     const [userId, setUser] = useState(0)
+    const [description, setDescription] = useState('')
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => Object.values(state.notebooks))
+    const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
+    const history = useHistory();
 
 
     let notebookList;
     useEffect(() => {
         dispatch(getNotebooks());
         if (sessionUser) {
-            const currUser = Object.values(sessionUser)
             setUser(sessionUser.id)
         }
     }, [dispatch, sessionUser])
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (name.length > 0) {
+            setErrors([]);
+            history.push('/home')
+            return dispatch(sessionActions.notebookCreate({ name, userId, description }))
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                });
+        }
+        return setErrors(['A great book needs a great name']);
+    };
+
     if (notebooks) {
         notebookList = (
-            <form>
+            <form onSubmit={handleSubmit}>
+                <div className='Errors'>
+                    <ul>
+                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>
+                </div>
                 <label>Notebook Name</label>
-                <input
-                    name='userId'
-                    type='hidden'
-                    value={userId}
-                ></input>
-                <div>
+                <div className='input-div'>
                     <input
                         type="text"
                         className='notebook-input'
-                        value={notebook}
-                        onChange={(e) => setNotebook(e.target.value)}
+                        placeholder='cool notebook name'
+                        value={name}
+                        onChange={(e) => setname(e.target.value)}
                         required
                     />
                 </div>
-                <div>
+                <div className='input-div'>
+                    <input
+                        type="text"
+                        className='notebook-input'
+                        placeholder='awesome detailed description'
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className='btn-div'>
                     <button>| Create |</button>
                 </div>
+
             </form>
         );
     } else {
@@ -67,11 +91,13 @@ function Notebook() {
     // }
 
     return (
-        <html className='create-notebook-page'>
+        <div>
+            {notebookList}
             <div>
-                {notebookList}
+                <button>| Delete |</button>
             </div>
-        </html>
+        </div>
+
     );
 }
 
