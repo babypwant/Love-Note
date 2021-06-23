@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import './Notebook.css';
 import * as sessionActions from "../../store/session";
 import { getNotebooks } from '../../store/notebooks'
-import { Redirect, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 //Main bug to fix for tommorrow:
 
