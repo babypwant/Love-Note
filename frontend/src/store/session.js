@@ -120,6 +120,21 @@ export const notebookDelete = (notebook) => async (dispatch) => {
     return response;
     // return true
 };
+export const notebookEdit = (notebook) => async (dispatch) => {
+    const { id, description, userId } = notebook;
+    const response = await csrfFetch(`/api/notebooks/${id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+            id,
+            description,
+            userId
+        }),
+    });
+    const data = await response.json();
+    dispatch(setNotebook(data.notebook));
+    return response;
+    // return true
+};
 
 const initialState = { user: null };
 

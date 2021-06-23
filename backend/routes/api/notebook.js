@@ -43,6 +43,22 @@ router.get('/:id', asyncHandler(async (req, res) => {
 
 }))
 
+router.put('/:id', asyncHandler(async (req, res) => {
+    const notebook = await Notebook.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    if (notebook) {
+        console.log(1)
+        // await list.update({ name: req.body.name, description: req.body.description });
+        // res.json({ notebook })
+    } else {
+        next(listNotFoundError(req.params.id));
+    }
+}));
+
+
 router.delete("/:id", asyncHandler(async (req, res, next) => {
     const notebook = await Notebook.findOne({
         where: {

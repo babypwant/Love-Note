@@ -49,8 +49,8 @@ function App() {
       </Route>
       <Route path='/edit/notebook/:id'>
         <div style={{
-          height: '100%',
-          backgroundColor: `rgba(47,49,60,255)`
+          height: '937',
+          backgroundColor: `rgba(47,49,60,255)`,
         }}>
           <NotebookEdit />
         </div>
