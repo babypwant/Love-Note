@@ -38,6 +38,11 @@ router.post('/', notebookValidators, asyncHandler(async (req, res) => {
 }));
 
 
+router.get('/:id', asyncHandler(async (req, res) => {
+    return (console.log(1))
+
+}))
+
 router.delete("/:id", asyncHandler(async (req, res, next) => {
     const notebook = await Notebook.findOne({
         where: {

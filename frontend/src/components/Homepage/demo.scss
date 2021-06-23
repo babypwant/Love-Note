@@ -4,36 +4,56 @@
 }
 
 .test {
-    background-image: url('../../images/possible-background-1.gif');
+    background-image: url('../../images/galaxy.gif');
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     display: inline-block;
     color: white;
-    margin-top: 60px;
+	height: 100%;
+	width: 100%;
 }
 
 .test-2 {
     background-image: url('../../images/girl.gif');
-    display: flex;
-    flex-wrap: wrap;
-    display: inline-block;
     color: black; 
 	height: 100%;
 	width: 100%;
 }
 
-html {
-    min-height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-.book-shelf {
+.rows {
 	display: flex;
 	flex-wrap: wrap;
+    text-align: center;
+    position: relative;
+    margin-left: 500px;
+    width: 800px;
 }
-img {
+.book {
+    width: 200px;
+}
+.splash {
+    height: 75%;
+    align-items: center;
+    position: absolute;
+    margin-top: 80px;
+    margin-left: 200px;
+}
+
+.girl {
     border-radius: 4px;
-    padding: 5px;
-    width: 100px;
+}
+.content-div {
+    display: flex;
+    flex-wrap: wrap;
+}
+.notebook-info {
+    position: absolute;
+    text-align: center;
+    font-size: 30px;
+}
+
+.shelf {
+    height: 75%;
+    align-items: center;
+    position: absolute;
 }
