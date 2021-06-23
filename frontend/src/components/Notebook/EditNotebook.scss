@@ -1,15 +1,38 @@
+* {
+    box-sizing: border-box;
+  }
+
 .fire {
-    height: 100%;
-    width: 60%;
+    height: 80%;
+    width: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 .edit-form {
-  margin-left: 600px;
-    position: absolute;
     background-color: rgba(47,49,60,255);
-    outline: 5px dotted green;
-    width: 200px;
+    position: absolute;
+    right: 750;
+    top: 150;
+    margin: 20px;
+    // max-width: 300px;
+    width: 300px;
+    padding: 16px;
 }
-.wrapper-div{
-    display: flex;
-    justify-content: center;
+
+// .wrapper-div{
+//     display: flex;
+//     align-items: center;
+// }
+.form-name
+{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background: transparent;
+    font-size:14pt;
+    border: none;
+    outline: none;
 }

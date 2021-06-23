@@ -44,14 +44,18 @@ function NotebookEdit() {
     };
 
     return (
-        <div className='wrapper-div'>
+        <div>
+            <img src={fire} className='fire'></img>
             <form className='edit-form'>
                 <div>
-                    <label>Change name?</label>
+                    <input
+                        type='text'
+                        placeholder='Super cool new name'
+                        className='form-name'
+                    ></input>
                 </div>
             </form>
-            <img src={fire} className='fire'></img>
-        </div>
+        </div >
 
     );
 }
