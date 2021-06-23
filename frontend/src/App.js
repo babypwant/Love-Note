@@ -12,7 +12,6 @@ import Navigation from "./components/Navigation";
 
 ///Backgrounds
 import notebookBackground from '../src/images/LzRdnr.jpg'
-import homeBackground from '../src/images/possible-background-1.gif'
 ///
 
 function App() {

@@ -26,7 +26,7 @@ function Note() {
         dispatch(getNotebooks());
         dispatch(getUsers())
         console.log(sessionUser)
-    }, [dispatch])
+    }, [dispatch, sessionUser])
 
 
     if (notebooks) {

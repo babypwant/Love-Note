@@ -3,13 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import * as sessionActions from "../../store/session";
 import { getNotebooks } from '../../store/notebooks'
-import { Redirect, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import './demo.scss'
-import loggedOutBackground from '../../images/possible-background-1.gif'
+import notebookImage from '../../images/book1.png'
 
 //Main bug to fix for tommorrow:
 
 //history.push is not redirecting after I submit, maybe cant be used in a func?
+//Backgrounds not taking full screen
+//scale backgrouds and center 
+// sending the wrong thing into the array beacuse index does not start at 0
+//week14 wednesday lecture
 
 function Home() {
     const sessionUser = useSelector(state => state.session.user);
@@ -30,14 +34,14 @@ function Home() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const val = e.target.value
-        const notebook = notebooks[val - 1]
+        const value = e.target.value
+        const notebook = notebooks.find(notebook => value === notebook)
         console.log(notebook)
-        return dispatch(sessionActions.notebookDelete(notebook))
-            .catch(async (res) => {
-                const data = await res.json();
-                console.log(data)
-            });
+        // return dispatch(sessionActions.notebookDelete(notebook))
+        //     .catch(async (res) => {
+        //         const data = await res.json();
+        //         console.log(data)
+        //     });
     }
 
 
@@ -49,10 +53,12 @@ function Home() {
                 <h2> I am logged in</h2>
                 {notebooks.map((notebook) => {
                     return (
-                        <div className={`book-${notebook.id}`} value={notebook}>
-                            <h2>{notebook.name}</h2>
+                        <div className={`book-${notebook.id}`} value={notebook} key={`book-${notebook.id}`}>
+                            <h2 >{notebook.name}</h2>
+                            <img src={notebookImage} />
                             <h3>{notebook.description}</h3>
-                            <button type='submit' value={notebook.id} onClick={onSubmit} > | Delete |</button>
+                            {console.log(notebook)}
+                            <button type='submit' value={notebook} onClick={onSubmit} > | Delete |</button>
                         </div>
                     )
                 })}
