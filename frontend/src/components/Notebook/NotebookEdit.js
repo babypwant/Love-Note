@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import './EditNotebook.scss';
 import * as sessionActions from "../../store/session";
-import { getNotebooks } from '../../store/notebooks'
+import notebooksReducer, { getNotebooks } from '../../store/notebooks'
 import { useHistory } from 'react-router-dom'
 import fire from '../../images/campfire.png'
+import { useParams } from 'react-router';
 //Main bug to fix for tommorrow:
 
 //history.push is not redirecting after I submit, maybe cant be used in a func?
@@ -19,6 +20,7 @@ function NotebookEdit() {
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
     const history = useHistory();
+    const { id } = useParams()
 
 
     let notebookList;
@@ -43,6 +45,13 @@ function NotebookEdit() {
         return setErrors(['A great book needs a great name']);
     };
 
+    const onSubmit = () => {
+        const notebook = notebooks[id - 1]
+        console.log(notebook)
+
+        //return dispatch(sessionActions.notebookEdit({ id, name, description }))
+    }
+
     return (
         <div>
             <img src={fire} className='fire'></img>
@@ -52,7 +61,21 @@ function NotebookEdit() {
                         type='text'
                         placeholder='Super cool new name'
                         className='form-name'
+                        value={name}
+                        onChange={(e) => setname(e.target.value)}
                     ></input>
+                </div>
+                <div >
+                    <input
+                        type='text'
+                        placeholder='         new lore?'
+                        value={description}
+                        onChange={(e) => { setDescription(e.target.value) }}
+                        className='description'
+                    ></input>
+                </div>
+                <div class='btn-container' >
+                    <div class="pixel" onClick={onSubmit}><p>Drink water</p></div>
                 </div>
             </form>
         </div >
