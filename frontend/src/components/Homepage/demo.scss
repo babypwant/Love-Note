@@ -13,12 +13,13 @@
 }
 
 .test-2 {
-    background-image: url('../../images//LzRdnr.jpg');
+    background-image: url('../../images/girl.gif');
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     display: inline-block;
-    color: black;
-    margin-top: 60px;
+    color: black; 
+	height: 100%;
+	width: 100%;
 }
 
 html {
@@ -26,4 +27,8 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+}
+.book-shelf {
+	display: flex;
+	flex-wrap: wrap;
 }

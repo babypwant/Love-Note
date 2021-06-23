@@ -105,6 +105,21 @@ export const notebookCreate = (notebook) => async (dispatch) => {
     return response;
 };
 
+export const notebookDelete = (notebook) => async (dispatch) => {
+    const { id, description, userId } = notebook;
+    const response = await csrfFetch(`/api/notebooks/${id}`, {
+        method: "DELETE",
+        body: JSON.stringify({
+            id,
+            description,
+            userId
+        }),
+    });
+    const data = await response.json();
+    dispatch(setNotebook(data.notebook));
+    return response;
+    // return true
+};
 
 const initialState = { user: null };
 
@@ -118,6 +133,10 @@ const sessionReducer = (state = initialState, action) => {
         case REMOVE_USER:
             newState = Object.assign({}, state);
             newState.user = null;
+            return newState;
+        case SET_NOTEBOOK:
+            newState = Object.assign({}, state);
+            newState.notebooks = action.payload
             return newState;
         default:
             return state;

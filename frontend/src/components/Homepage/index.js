@@ -25,19 +25,37 @@ function Home() {
         if (sessionUser) {
             setUser(sessionUser.id)
         }
+
     }, [dispatch, sessionUser])
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const val = e.target.value
+        const notebook = notebooks[val - 1]
+        console.log(notebook)
+        return dispatch(sessionActions.notebookDelete(notebook))
+            .catch(async (res) => {
+                const data = await res.json();
+                console.log(data)
+            });
+    }
+
 
     if (sessionUser) {
         background = 'test-2'
+
         notebookList = (
-            <div>
+            <div className='book-shelf'>
                 <h2> I am logged in</h2>
-                {
-                    notebooks.forEach(notebook => {
-                        { console.log(notebook.name) }
-                        <li>{notebook.name}</li>
-                    })
-                }
+                {notebooks.map((notebook) => {
+                    return (
+                        <div className={`book-${notebook.id}`} value={notebook}>
+                            <h2>{notebook.name}</h2>
+                            <h3>{notebook.description}</h3>
+                            <button type='submit' value={notebook.id} onClick={onSubmit} > | Delete |</button>
+                        </div>
+                    )
+                })}
             </div>
         );
     } else {
@@ -49,16 +67,9 @@ function Home() {
         )
     }
 
-
     return (
         <div className={background}>
-            <ul>
-                {notebookList}
-                {notebooks.forEach((notebook => {
-                    { console.log(notebook) }
-                    <li>{notebook.name}</li>
-                }))}
-            </ul>
+            {notebookList}
         </div>
 
     );
