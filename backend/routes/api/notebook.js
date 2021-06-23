@@ -44,13 +44,6 @@ router.delete("/:id", asyncHandler(async (req, res, next) => {
             id: req.params.id,
         },
     });
-    if (res.locals.user.id !== list.userId) {
-        const err = new Error("Unauthorized");
-        err.status = 401;
-        err.message = "You are not authorized to delete this tweet.";
-        err.title = "Unauthorized";
-        throw err;
-    }
     if (notebook) {
         await notebook.destroy();
         await res.json({ message: `List ${notebook.name} is gone forever, poooof.` });
