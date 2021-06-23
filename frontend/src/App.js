@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import Notebook from './components/Notebook'
 import Note from "./components/Note";
 import Home from "./components/Homepage";
+import NotebookEdit from "./components/Notebook/NotebookEdit";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -46,10 +47,18 @@ function App() {
           <Notebook />
         </div>
       </Route>
+      <Route path='/edit/notebook/:id'>
+        <div style={{
+          height: '100%',
+          backgroundColor: `rgba(47,49,60,255)`
+        }}>
+          <NotebookEdit />
+        </div>
+      </Route>
       <Route path='/note'>
         <Note />
       </Route>
-      <Route path='/'>
+      <Route path='/' exact>
         <Home />
       </Route>
     </>
