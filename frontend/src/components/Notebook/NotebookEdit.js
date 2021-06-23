@@ -9,7 +9,10 @@ import fire from '../../images/campfire.png'
 import { useParams } from 'react-router';
 //Main bug to fix for tommorrow:
 
-//history.push is not redirecting after I submit, maybe cant be used in a func?
+//Id is not reliable and need to go back to notebook/index.js and fix so I can
+//realiably get Id's 
+//Also on the home page, we need to figure out how to cause a rerender
+//after we delete/edit/ or create a book
 
 function NotebookEdit() {
     const [name, setname] = useState('')
@@ -22,8 +25,6 @@ function NotebookEdit() {
     const history = useHistory();
     const { id } = useParams()
 
-
-    let notebookList;
     useEffect(() => {
         dispatch(getNotebooks());
         if (sessionUser) {
@@ -31,25 +32,12 @@ function NotebookEdit() {
         }
     }, [dispatch, sessionUser])
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (name.length > 0) {
-            setErrors([]);
-            history.push('/home')
-            return dispatch(sessionActions.notebookCreate({ name, userId, description }))
-                .catch(async (res) => {
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-                });
-        }
-        return setErrors(['A great book needs a great name']);
-    };
-
     const onSubmit = () => {
         const notebook = notebooks[id - 1]
-        console.log(notebook)
-
-        //return dispatch(sessionActions.notebookEdit({ id, name, description }))
+        setname(notebook.name)
+        setDescription(notebook.description)
+        history.push('/')
+        return dispatch(sessionActions.notebookEdit({ id, name, description }))
     }
 
     return (

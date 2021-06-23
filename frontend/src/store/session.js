@@ -1,4 +1,5 @@
 import { csrfFetch } from './csrf';
+import notebooksReducer from './notebooks';
 
 const SET_USER = 'session/setUser';
 const SET_NOTEBOOK = 'session/setNotebook'
@@ -118,22 +119,20 @@ export const notebookDelete = (notebook) => async (dispatch) => {
     const data = await response.json();
     dispatch(setNotebook(data.notebook));
     return response;
-    // return true
 };
 export const notebookEdit = (notebook) => async (dispatch) => {
-    const { id, description, userId } = notebook;
+    const { id, name, description } = notebook;
     const response = await csrfFetch(`/api/notebooks/${id}`, {
         method: "PUT",
         body: JSON.stringify({
             id,
+            name,
             description,
-            userId
         }),
     });
     const data = await response.json();
     dispatch(setNotebook(data.notebook));
     return response;
-    // return true
 };
 
 const initialState = { user: null };

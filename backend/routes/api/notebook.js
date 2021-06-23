@@ -50,9 +50,8 @@ router.put('/:id', asyncHandler(async (req, res) => {
         }
     })
     if (notebook) {
-        console.log(1)
-        // await list.update({ name: req.body.name, description: req.body.description });
-        // res.json({ notebook })
+        await notebook.update({ name: req.body.name, description: req.body.description });
+        res.json({ notebook })
     } else {
         next(listNotFoundError(req.params.id));
     }
@@ -67,7 +66,7 @@ router.delete("/:id", asyncHandler(async (req, res, next) => {
     });
     if (notebook) {
         await notebook.destroy();
-        await res.json({ message: `List ${notebook.name} is gone forever, poooof.` });
+        await res.json({ message: `Book ${notebook.name} is gone forever, poooof.` });
     } else {
         next(listNotFoundError(req.params.id));
     }
