@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import * as sessionActions from "../../store/session";
+import * as sessionActions from "../../store/notebooks";
 import { getNotebooks } from '../../store/notebooks'
 import { useHistory } from 'react-router-dom'
 import './home.scss'
@@ -42,7 +42,6 @@ function Home() {
         } else {
             setMode(false)
         }
-        console.log(notebook)
         return dispatch(sessionActions.notebookDelete(notebook))
             .catch(async (res) => {
                 const data = await res.json();
@@ -69,7 +68,7 @@ function Home() {
                             <div>
                                 <div className={`book-${notebook.id}`} value={notebook} key={`book-${notebook.id}`}>
                                     <h2 className='notebook-info'>{notebook.name}</h2>
-                                    <img src={notebookImage} className='book' />
+                                    <img src={notebookImage} className='book' alt="img" />
                                     <h2 className='notebook-info'>{notebook.description}</h2>
                                     <button type='submit' value={notebook.id} onClick={onSubmit} > | Delete |</button>
                                     <button type='submit' value={notebook.id} onClick={(editNotebook)}> | Edit Book|</button>
