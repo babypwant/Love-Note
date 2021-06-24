@@ -16,7 +16,7 @@ when I refresh my sessions user information returns null, why?
 works only on the first instance of loading the page
 */
 
-function Note() {
+function AllNotes() {
     const [description, setDescription] = useState('')
     const sessionUser = useSelector(state => state.session.user);
     const [name, setname] = useState('')
@@ -38,7 +38,7 @@ function Note() {
         const stringNums = arrayNums.join('')
         const notebookId = parseInt(stringNums)
         if (name.length > 0 && description.length > 0) {
-            history.push(`/all/notes/${notebookId}`)
+            history.push(`/notes/${notebookId}`)
             return dispatch(sessionActions.noteCreate({ name, notebookId, description }))
                 .catch(async (res) => {
                     const data = await res.json();
@@ -74,4 +74,4 @@ function Note() {
     );
 }
 
-export default Note;
+export default AllNotes;

@@ -7,6 +7,7 @@ import Notebook from './components/Notebook'
 import Note from "./components/Note";
 import Home from "./components/Homepage/Home.js";
 import NotebookEdit from "./components/Notebook/NotebookEdit";
+import AllNotes from "./components/Note/AllNotes";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import FrontPage from "./components/Homepage";
@@ -56,8 +57,11 @@ function App() {
           <NotebookEdit />
         </div>
       </Route>
-      <Route path='/notes'>
+      <Route path='/notes/:id' exact>
         <Note />
+      </Route>
+      <Route path='/all/notes/:id'>
+        <AllNotes />
       </Route>
       <Route path='/' exact>
         <FrontPage />
