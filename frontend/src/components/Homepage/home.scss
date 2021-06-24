@@ -1,0 +1,44 @@
+
+
+
+.logged-in {
+    background-image: url('../../images/city.gif');
+    color: black; 
+	height: 100%;
+	width: 100%;
+}
+
+.rows {
+	display: flex;
+	flex-wrap: wrap;
+    text-align: center;
+    position: relative;
+    margin-left: 500px;
+    width: 800px;
+}
+.book {
+    width: 200px;
+}
+.splash {
+    height: 75%;
+    position: absolute;
+    margin-top: 80px;
+    margin-left: 200px;
+}
+
+.girl {
+    border-radius: 8px;
+    margin-left: 150px;
+}
+
+.notebook-info {
+    position: absolute;
+    text-align: center;
+    font-size: 30px;
+}
+
+.shelf {
+    height: 75%;
+    align-items: center;
+    position: absolute;
+}

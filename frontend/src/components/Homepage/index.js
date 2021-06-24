@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import * as sessionActions from "../../store/session";
-import { getNotebooks } from '../../store/notebooks'
-import { useHistory } from 'react-router-dom'
+
 import './demo.scss'
-import notebookImage from '../../images/book1.png'
+import * as sessionActions from '../../store/session';
+import { useDispatch, useSelector } from 'react-redux';
 import girl from '../../images/girl.gif'
-import bookshelf from '../../images/bookshelf.png'
+import { useHistory } from 'react-router';
+import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //Main bug to fix for tommorrow:
 
@@ -17,93 +15,50 @@ import bookshelf from '../../images/bookshelf.png'
 // sending the wrong thing into the array beacuse index does not start at 0
 //week14 wednesday lecture
 
-function Home() {
-    const sessionUser = useSelector(state => state.session.user);
-    const [userId, setUser] = useState(0)
-    const [mode, setMode] = useState(false)
-    const notebooks = useSelector(state => Object.values(state.notebooks))
+function FrontPage() {
     const dispatch = useDispatch();
     const history = useHistory();
-    let notebookList;
-    let background;
-    let bookAmount = 0;
-    let bookshelf;
 
-    useEffect(() => {
-        dispatch(getNotebooks());
-        if (sessionUser) {
-            setUser(sessionUser.id)
-        }
-
-    }, [dispatch, sessionUser])
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-        const value = e.target.value
-        const notebook = notebooks[value - 1]
-        if (mode === false) {
-            setMode(true)
-        } else {
-            setMode(true)
-        }
-        return dispatch(sessionActions.notebookDelete(notebook))
+    const demoUserSignIn = (e) => {
+        e.preventDefault()
+        const credential = 'demo'
+        const password = 'password'
+        history.push('/home')
+        return dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
                 const data = await res.json();
-                console.log(data)
             });
     }
 
-    const editNotebook = (e) => {
-        e.preventDefault();
-        const bookId = e.target.value - 1
-        history.push(`/edit/notebook/${bookId}`)
-    }
-
-
-    if (sessionUser) {
-        background = 'test-2'
-        notebookList = (
-            <div className='rows'>
-                <div>
-                    <img src={bookshelf} className='shelf'></img>
-                </div>
-                {notebooks.map((notebook) => {
-                    return (
-                        <div>
-                            <div className={`book-${notebook.id}`} value={notebook} key={`book-${notebook.id}`}>
-                                <h2 className='notebook-info'>{notebook.name}</h2>
-                                <img src={notebookImage} className='book' />
-                                <h2 className='notebook-info'>{notebook.description}</h2>
-                                <button type='submit' value={bookAmount += 1} onClick={onSubmit} > | Delete |</button>
-                                <button type='submit' value={bookAmount += 1} onClick={(editNotebook)}> | Edit Book|</button>
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-        );
-    } else {
-        background = 'test'
-        notebookList = (
-            <div className='content-div'>
-                <div className='wording'>
-                    <h2> Vibe anywhere</h2>
-                </div>
-                <div className='image-container'>
-                    <img src={girl} className='girl'></img>
-                </div>
-            </div>
-        )
-    }
-
     return (
-        <div className={background}>
+        <div className='logged-out'>
             <div className='splash'>
-                {notebookList}
+                <div>
+                    <div class="content">
+                        <div class="content__container">
+                            <p class="content__container__text">
+                                Vibe
+                            </p>
+
+                            <ul class="content__container__list">
+                                <li class="content__container__list__item">Anywhere</li>
+                                <li class="content__container__list__item">In Space</li>
+                                <li class="content__container__list__item">On a date</li>
+                                <li class="content__container__list__item">with AS</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className='image-container'>
+                        <img src={girl} className='girl'></img>
+                    </div>
+                    <div className='btn-div'>
+                        <span type='submit' class='demo-btn' onClick={demoUserSignIn}>   Try Demo  User   </span>
+                    </div>
+                </div>
             </div>
         </div>
 
     );
 }
 
-export default Home;
+export default FrontPage;

@@ -33,7 +33,7 @@ function Notebook() {
         e.preventDefault();
         if (name.length > 0) {
             setErrors([]);
-            history.push('/')
+            history.push('/home')
             return dispatch(sessionActions.notebookCreate({ name, userId, description }))
                 .catch(async (res) => {
                     const data = await res.json();

@@ -6,6 +6,7 @@ const SET_NOTEBOOK = 'session/setNotebook'
 const REMOVE_USER = 'session/removeUser';
 const REMOVE_NOTEBOOK = 'session/removeNotebook'
 
+
 const setUser = (user) => {
     return {
         type: SET_USER,
