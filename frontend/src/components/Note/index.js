@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import './Note.css';
 import { getNotes } from '../../store/notes'
 import { getUsers } from '../../store/users'
+import { useParams } from 'react-router';
 
 //remember to make a hidden field with userId set from state
 //so we can assoc. userId into our table
@@ -19,12 +20,12 @@ function Note() {
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => Object.values(state.notebooks))
     const dispatch = useDispatch();
-
+    const { id } = useParams()
 
     useEffect(() => {
         dispatch(getNotes());
         dispatch(getUsers())
-        console.log(sessionUser)
+        console.log(id)
     }, [dispatch, sessionUser])
 
     const onSubmit = (e) => {
