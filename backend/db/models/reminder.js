@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Reminder.associate = function (models) {
     Reminder.belongsTo(models.User, { foreignKey: 'userId' })
-    Reminder.hasMany(models.Note, { foreignKey: 'notesId' })
+    Reminder.belongsTo(models.Note, { foreignKey: 'notesId' })
   };
   return Reminder;
 };

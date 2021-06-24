@@ -1,13 +1,21 @@
 import { csrfFetch } from "./csrf";
 
-const SET_NOTES = 'session/setNote'
+const SET_NOTES = 'users/setNotes'
 const REMOVE_NOTE = 'session/removeNote'
+const SET_NOTE = '/session/setNote'
 
 
 const setNotes = (notes) => ({
     type: SET_NOTES,
     notes
 });
+
+const setNote = (note) => {
+    return {
+        type: SET_NOTE,
+        payload: note,
+    };
+};
 
 export const getNotes = () => async (dispatch) => {
     const res = await csrfFetch('/api/notes')
@@ -33,7 +41,7 @@ export const noteCreate = (note) => async (dispatch) => {
         }),
     });
     const data = await response.json();
-    dispatch(setNotes(data.note));
+    dispatch(setNote(data.note));
     return response;
 };
 
@@ -62,7 +70,7 @@ export const noteEdit = (note) => async (dispatch) => {
         }),
     });
     const data = await response.json();
-    dispatch(setNotes(data.note));
+    dispatch(setNote(data.note));
     return response;
 };
 
@@ -80,17 +88,17 @@ const notesReducer = (state = initalState, action) => {
     let newState;
     switch (action.type) {
         case SET_NOTES:
-            const allnotes = {};
+            const allNotes = {};
             action.notes.forEach((note) => {
-                allnotes[note.id] = note;
+                allNotes[note.id] = note;
             });
             return {
                 ...state,
-                ...allnotes
+                ...allNotes
             };
-        case SET_NOTES:
+        case SET_NOTE:
             newState = Object.assign({}, state);
-            newState[action.notes.id] = action.notes
+            newState[action.payload.id] = action.payload
             return newState;
         case REMOVE_NOTE:
             newState = Object.assign({}, state);
