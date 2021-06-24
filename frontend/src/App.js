@@ -5,10 +5,11 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Notebook from './components/Notebook'
 import Note from "./components/Note";
-import Home from "./components/Homepage";
+import Home from "./components/Homepage/Home.js";
 import NotebookEdit from "./components/Notebook/NotebookEdit";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import FrontPage from "./components/Homepage";
 
 
 ///Backgrounds
@@ -59,6 +60,9 @@ function App() {
         <Note />
       </Route>
       <Route path='/' exact>
+        <FrontPage />
+      </Route>
+      <Route path='/home' exact>
         <Home />
       </Route>
     </>

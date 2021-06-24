@@ -20,7 +20,6 @@ function NotebookEdit() {
     const [description, setDescription] = useState('')
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => Object.values(state.notebooks))
-    const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams()
@@ -33,7 +32,7 @@ function NotebookEdit() {
     }, [dispatch, sessionUser])
 
     const onSubmit = () => {
-        const notebook = notebooks[id - 1]
+        const notebook = notebooks.find((notebook) => notebook.id = id)
         setname(notebook.name)
         setDescription(notebook.description)
         history.push('/')
