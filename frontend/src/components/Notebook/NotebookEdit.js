@@ -35,7 +35,7 @@ function NotebookEdit() {
         const notebook = notebooks.find((notebook) => notebook.id = id)
         setname(notebook.name)
         setDescription(notebook.description)
-        history.push('/')
+        history.push('/home')
         return dispatch(sessionActions.notebookEdit({ id, name, description }))
     }
 
