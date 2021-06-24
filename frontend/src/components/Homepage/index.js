@@ -1,11 +1,9 @@
 
 import './demo.scss'
 import * as sessionActions from '../../store/session';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import girl from '../../images/girl.gif'
 import { useHistory } from 'react-router';
-import { Redirect } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
 //Main bug to fix for tommorrow:
 
@@ -49,7 +47,7 @@ function FrontPage() {
                         </div>
                     </div>
                     <div className='image-container'>
-                        <img src={girl} className='girl'></img>
+                        <img src={girl} className='girl' alt="img"></img>
                     </div>
                     <div className='btn-div'>
                         <span type='submit' class='demo-btn' onClick={demoUserSignIn}>   Try Demo  User   </span>

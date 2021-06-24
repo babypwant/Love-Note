@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import './Notebook.css';
-import * as sessionActions from "../../store/session";
+import * as sessionActions from "../../store/notebooks";
 import { getNotebooks } from '../../store/notebooks'
 import { useHistory } from 'react-router-dom'
 

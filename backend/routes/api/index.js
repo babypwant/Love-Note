@@ -7,10 +7,12 @@ const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const noteBookRouter = require('./notebook.js')
+const notesRouter = require('./note')
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/notebooks', noteBookRouter)
+router.use('/notes', notesRouter)
 
 
 //TEST ROUTES FOR AUTH USER, RESTORE USER, & REQIUIRE AUTH

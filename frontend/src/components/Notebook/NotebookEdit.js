@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import './EditNotebook.scss';
-import * as sessionActions from "../../store/session";
-import notebooksReducer, { getNotebooks } from '../../store/notebooks'
+import * as sessionActions from "../../store/notebooks";
+import { getNotebooks } from '../../store/notebooks'
 import { useHistory } from 'react-router-dom'
 import fire from '../../images/campfire.png'
 import { useParams } from 'react-router';
@@ -38,10 +38,14 @@ function NotebookEdit() {
         history.push('/home')
         return dispatch(sessionActions.notebookEdit({ id, name, description }))
     }
+    const newNote = (e) => {
+        e.preventDefault();
+        history.push(`/notes/${id}`)
+    }
 
     return (
         <div>
-            <img src={fire} className='fire'></img>
+            <img src={fire} className='fire' alt="img"></img>
             <form className='edit-form'>
                 <div>
                     <input
@@ -64,6 +68,8 @@ function NotebookEdit() {
                 <div class='btn-container' >
                     <div class="pixel" onClick={onSubmit}><p>Drink water</p></div>
                 </div>
+                <button onClick={newNote}>Add a new chapter</button>
+                <button>Nvm im boring and hate books</button>
             </form>
         </div >
 

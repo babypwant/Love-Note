@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import './Note.css';
-import { getNotebooks } from '../../store/notebooks'
+import { getNotes } from '../../store/notes'
 import { getUsers } from '../../store/users'
 
 //remember to make a hidden field with userId set from state
@@ -15,55 +15,39 @@ works only on the first instance of loading the page
 */
 
 function Note() {
-    const [notebook, setNotebook] = useState('')
+    const [note, setNote] = useState({})
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => Object.values(state.notebooks))
     const dispatch = useDispatch();
 
 
-    let notebookList;
     useEffect(() => {
-        dispatch(getNotebooks());
+        dispatch(getNotes());
         dispatch(getUsers())
         console.log(sessionUser)
     }, [dispatch, sessionUser])
 
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log(1)
+    };
 
-    if (notebooks) {
-        notebookList = (
-            <form>
-                <label>Notebook Name</label>
-                <input
-                    name='userId'
-                    type='hidden'
-                    value={0}
-                ></input>
+
+    return (
+        <div>
+            <form onSubmit={onsubmit}>
+                <label>Note Name</label>
                 <div>
                     <input
                         type="text"
                         className='notebook-input'
-                        value={notebook}
-                        onChange={(e) => setNotebook(e.target.value)}
+                        onChange={(e) => setNote(e.target.value)}
                         required
                     />
                 </div>
+                <button> Create a new chapter !</button>
+                <button> Edit note button </button>
             </form>
-        );
-    } else {
-        return true
-    }
-
-
-    //Possible useful code to get all notebooks at home page
-    // {
-    //     notebooks.map(notebook => {
-    //         return <h2>{notebook.name}</h2>
-    //     })
-    // }
-
-    return (
-        <div>
-            {notebookList}
         </div>
     );
 }

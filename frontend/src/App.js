@@ -56,7 +56,7 @@ function App() {
           <NotebookEdit />
         </div>
       </Route>
-      <Route path='/note'>
+      <Route path='/notes'>
         <Note />
       </Route>
       <Route path='/' exact>
