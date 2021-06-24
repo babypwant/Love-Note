@@ -1,0 +1,29 @@
+.pages {
+    background: #a8a3a0;
+    padding: 20px;
+    overflow: scroll;
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .page {
+    height: 11in;
+    width: 8.5in;
+    background: white;
+    margin: auto;
+    text-align: left;
+    display: block;
+    box-shadow: 5px 5px 5px 0;
+  }
+  
+  .page-editable {
+    outline: none;
+    padding: 4em 4em;
+  }
+  
+  body {
+    font-family: Verdana, Arial, Sans-Serif;
+    padding: 0;
+    margin: 0;
+  }
