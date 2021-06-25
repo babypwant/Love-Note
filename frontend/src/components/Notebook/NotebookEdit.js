@@ -44,7 +44,7 @@ function NotebookEdit() {
     }
 
     return (
-        <div>
+        <div className='edit-container'>
             <img src={fire} className='fire' alt="img"></img>
             <form className='edit-form'>
                 <div>

@@ -51,7 +51,7 @@ function Note() {
 
 
     return (
-        <div>
+        <div className='container-div'>
             <form >
                 <label>name:</label>
                 <input
