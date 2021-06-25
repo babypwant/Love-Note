@@ -28,6 +28,35 @@ router.get('/:id', asyncHandler(async (req, res,) => {
     res.json(notes);
 }));
 
+router.put('/:id', asyncHandler(async (req, res) => {
+    const note = await Note.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    if (note) {
+        await note.update({ name: req.body.name, description: req.body.description });
+        res.json({ notebook })
+    } else {
+        next(listNotFoundError(req.params.id));
+    }
+}));
+
+
+router.delete("/:id", asyncHandler(async (req, res, next) => {
+    const note = await Note.findOne({
+        where: {
+            id: req.params.id,
+        },
+    });
+    if (note) {
+        await note.destroy();
+        await res.json({ message: `Ancient lore ${note.name} is gone forever, no more butterbread receipes` });
+    } else {
+        next(listNotFoundError(req.params.id));
+    }
+}));
+
 
 
 module.exports = router;

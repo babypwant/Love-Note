@@ -17,8 +17,9 @@ when I refresh my sessions user information returns null, why?
 works only on the first instance of loading the page
 */
 
-function AllNotes() {
-
+function EditNote() {
+    const [name, setName] = useState();
+    const [description, setDescription] = useState();
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => Object.values(state.notebooks))
     const notes = useSelector(state => Object.values(state.notes))
@@ -29,10 +30,6 @@ function AllNotes() {
     const allNotes = notes.filter(function (note) {
         return note.notebookId === Number(id);
     })
-
-
-
-
 
     useEffect(() => {
         dispatch(getNotes());
@@ -46,40 +43,40 @@ function AllNotes() {
         e.preventDefault();
         const noteId = e.target.value
         console.log(noteId)
-
+        history.push(`/all/notes/${id}`)
     };
 
 
     const onClick = (e) => {
         e.preventDefault();
-        const noteId = e.target.value
-        history.push(`/edit/note/${noteId}`)
-    }
-    const deleteLore = (e) => {
-        e.preventDefault();
-        const value = e.target.value
-
-        const note = notes.find((note) => note.id = value)
-        console.log(note)
-        return dispatch(sessionActions.noteDelete(note))
-            .catch(async (res) => {
-                const data = await res.json();
-                console.log(data)
-            });
+        const noteId = parseInt(id)
+        const note = notes.find((note) => note.id === noteId)
+        const notebookId = note.notebookId
+        history.push(`/all/notes/${notebookId}`)
+        return dispatch(sessionActions.noteEdit({ id, name, description }))
     }
 
     return (
         <div>
-            {allNotes.map((note) => {
-                return <div >
-                    <h2>{note.name}</h2>
-                    <button onClick={onClick} key={note.id} value={note.id}>Edit Chapter </button>
-                    <button onClick={deleteLore} value={note.id}>Delete lore</button>
-                </div>
-            })
-            }
+            <h2>New name</h2>
+            <input
+                type='text'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            >
+            </input>
+            <h2>New content</h2>
+            <input
+                type='text'
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+            >
+            </input>
+            <div>
+                <button onClick={onClick}> Change lore</button>
+            </div>
         </div>
     );
 }
 
-export default AllNotes;
+export default EditNote;
