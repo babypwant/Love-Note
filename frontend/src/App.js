@@ -11,6 +11,7 @@ import AllNotes from "./components/Note/AllNotes";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import FrontPage from "./components/Homepage";
+import EditNote from "./components/Note/EditNote";
 
 
 ///Backgrounds
@@ -59,6 +60,9 @@ function App() {
       </Route>
       <Route path='/notes/:id' exact>
         <Note />
+      </Route>
+      <Route path='/edit/note/:id'>
+        <EditNote />
       </Route>
       <Route path='/all/notes/:id'>
         <AllNotes />
