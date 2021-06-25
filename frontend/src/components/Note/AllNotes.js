@@ -48,12 +48,19 @@ function AllNotes() {
     };
 
 
+    const onClick = () => {
+        console.log(1)
+    }
+
     return (
         <div>
             <h2>Hello</h2>
             {allNotes.map((note) => {
                 { console.log(note.name) }
-                return <h2>{note.name}</h2>
+                return <div>
+                    <h2>{note.name}</h2>
+                    <button onClick={onClick}>Edit note </button>
+                </div>
             })
             }
         </div>
