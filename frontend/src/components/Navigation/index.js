@@ -30,7 +30,6 @@ function Navigation({ isLoaded }) {
     return (
         <div className='navbar-wrapper'>
             <div className='navbar-left'>
-                <i class="fab fa-evernote"></i>
                 <NavLink exact to="/home" className='navbar-btn fas fa-home'>Home</NavLink>
                 {isLoaded && sessionLinks}
             </div>

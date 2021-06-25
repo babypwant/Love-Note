@@ -29,7 +29,7 @@ function SignupFormPage() {
     };
 
     return (
-        <body className='background'>
+        <body className='background' className='container-div'>
 
             <form onSubmit={handleSubmit} className='signup-form'>
                 <div className='form-wrapper'>

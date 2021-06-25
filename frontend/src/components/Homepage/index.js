@@ -30,29 +30,27 @@ function FrontPage() {
 
     return (
         <div className='logged-out'>
-            <div className='splash'>
-                <div>
-                    <div class="content">
-                        <div class="content__container">
-                            <p class="content__container__text">
-                                Vibe
-                            </p>
-
-                            <ul class="content__container__list">
-                                <li class="content__container__list__item">Anywhere</li>
-                                <li class="content__container__list__item">In Space</li>
-                                <li class="content__container__list__item">On a date</li>
-                                <li class="content__container__list__item">with AS</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className='image-container'>
-                        <img src={girl} className='girl' alt="img"></img>
-                    </div>
-                    <div className='btn-div'>
-                        <span type='submit' class='demo-btn' onClick={demoUserSignIn}>   Try Demo  User   </span>
-                    </div>
+            <div className="content">
+                <div className="content__container">
+                    <p className="content__container__text">
+                        Vibe
+                    </p>
+                    <ul className="content__container__list">
+                        <li className="content__container__list__item">Anywhere</li>
+                        <li className="content__container__list__item">In Space</li>
+                        <li className="content__container__list__item">On a date</li>
+                        <li className="content__container__list__item">with AS</li>
+                    </ul>
                 </div>
+            </div>
+            <div className='image-container'>
+                <img src={girl} className='girl' alt="img"></img>
+            </div>
+            <div className='demo-div'>
+                <span type='submit' className='demo-btn' onClick={demoUserSignIn}>   Try Demo  User   </span>
+            </div>
+            <div className='login-div'>
+                <span type='submit' className='login-btn' onClick={demoUserSignIn}>   Login   </span>
             </div>
         </div>
 

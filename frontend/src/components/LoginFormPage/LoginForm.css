@@ -2,9 +2,6 @@
 Come back to css
 */
 
-body {
+.container-div {
     text-align: center;
-}
-form {
-    display: inline-block;
 }
