@@ -16,7 +16,7 @@ module.exports = {
       notesId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Notebooks' }
+        references: { model: 'Notes' }
       },
       content: {
         type: Sequelize.TEXT

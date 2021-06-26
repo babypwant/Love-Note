@@ -3,7 +3,7 @@ Come back to css
 */
 
 
-form {
+.notebook-form {
     display: flex;
     flex-direction: column;
     display: inline-block;

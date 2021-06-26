@@ -28,6 +28,15 @@ function FrontPage() {
             });
     }
 
+    const login = (e) => {
+        e.preventDefault();
+        history.push('/login')
+    }
+
+    const signup = (e) => {
+        e.preventDefault();
+        history.push('/signup')
+    }
     return (
         <div className='logged-out'>
             <div className="content">
@@ -49,8 +58,11 @@ function FrontPage() {
             <div className='demo-div'>
                 <span type='submit' className='demo-btn' onClick={demoUserSignIn}>   Try Demo  User   </span>
             </div>
-            <div className='login-div'>
-                <span type='submit' className='login-btn' onClick={demoUserSignIn}>   Login   </span>
+            <div >
+                <span type='submit' className='userlogin-btn' onClick={login}>   Login Here      </span>
+            </div>
+            <div className='signup-div'>
+                <span type='submit' className='usersignup-btn' onClick={signup}>   Sign Up      </span>
             </div>
         </div>
 

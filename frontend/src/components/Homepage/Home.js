@@ -37,6 +37,7 @@ function Home() {
         e.preventDefault();
         const value = e.target.value
         const notebook = notebooks.find((notebook) => notebook.id = value)
+        console.log(notebook)
         if (mode === false) {
             setMode(true)
         } else {
@@ -58,27 +59,20 @@ function Home() {
 
     return (
         <div className='logged-in'>
-            <div className='splash'>
-                <div className='rows'>
-                    <div>
-                        <img src={bookshelf} className='shelf'></img>
-                    </div>
-                    {notebooks.map((notebook) => {
-                        return (
-                            <div>
-                                <div className={`book-${notebook.id}`} value={notebook} key={`book-${notebook.id}`}>
-                                    <h2 className='notebook-info'>{notebook.name}</h2>
-                                    <img src={notebookImage} className='book' alt="img" />
-                                    <h2 className='notebook-info'>{notebook.description}</h2>
-                                    <button type='submit' value={notebook.id} onClick={onSubmit} > | Delete |</button>
-                                    <button type='submit' value={notebook.id} onClick={(editNotebook)}> | Edit Book|</button>
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
+            <div className='rows'>
+                {notebooks.map((notebook) => {
+                    return (
+                        <div className='item-book-container' value={notebook} key={`book-${notebook.id}`}>
+                            <img src={notebookImage} className='book' alt="img" />
+                            <h2 className='notebook-name'>{notebook.name}</h2>
+                            <h2 className='notebook-description'>{notebook.description}</h2>
+                            <button type='submit' value={notebook.id} onClick={onSubmit} className='border' > Destroy Book </button>
+                            <button type='submit' value={notebook.id} onClick={(editNotebook)} className='border'> Add a new Chapter</button>
+                        </div>
+                    )
+                })}
             </div>
-        </div>
+        </div >
 
     );
 }

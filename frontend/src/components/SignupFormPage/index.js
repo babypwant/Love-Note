@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import './SignupForm.css';
+import './SignupForm.scss';
 
 function SignupFormPage() {
     const dispatch = useDispatch();
@@ -29,7 +29,7 @@ function SignupFormPage() {
     };
 
     return (
-        <body className='background' className='container-div'>
+        <body className='container-div'>
 
             <form onSubmit={handleSubmit} className='signup-form'>
                 <div className='form-wrapper'>
@@ -91,7 +91,7 @@ function SignupFormPage() {
                             />
                         </label>
                     </div>
-                    <button className='btn' type="submit">Talk to Karl !</button>
+                    <button className='sign-up-btn' type="submit">Become cool !</button>
                 </div>
             </form>
         </body >

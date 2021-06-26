@@ -45,7 +45,7 @@ function Notebook() {
 
     if (notebooks) {
         notebookList = (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='notebook-form'>
                 <div className='Errors'>
                     <ul>
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}

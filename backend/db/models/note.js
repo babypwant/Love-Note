@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     return await Note.findByPk(note.id);
   };
   Note.associate = function (models) {
+    Note.hasMany(models.Reminder, { onDelete: 'CASCADE', hooks: true, foreignKey: 'notesId' })
     Note.belongsTo(models.Notebook, { foreignKey: 'notebookId' })
-    Note.hasMany(models.Reminder, { foreignKey: 'notebookId' })
   };
   return Note;
 };

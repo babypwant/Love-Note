@@ -9,36 +9,53 @@
 }
 
 .rows {
-	display: flex;
-	flex-wrap: wrap;
-    text-align: center;
     position: relative;
-    margin-left: 500px;
-    width: 800px;
+	display: flex;
+    justify-content: space-around;
+    width: 1500px;
+    font-size: auto;
 }
 .book {
-    width: 200px;
-}
-.splash {
-    height: 75%;
     position: absolute;
-    margin-top: 80px;
-    margin-left: 200px;
+    width: 375px;
+    height: 375px;
 }
 
-.girl {
-    border-radius: 8px;
-    margin-left: 150px;
+.notebook-name {
+    position: absolute;
+    font-size: auto;
+    margin-top: 50;
+    margin-left: 100;
+}
+.notebook-description {
+    position: absolute;
+    margin-top: 350;
+    margin-left: 70;
+
 }
 
-.notebook-info {
-    position: absolute;
+.item-book-container {
     text-align: center;
-    font-size: 30px;
+     margin-top: 50;
 }
 
-.shelf {
-    height: 75%;
-    align-items: center;
-    position: absolute;
-}
+.border {
+    background-color: #fdeac6;
+    border-radius: 10px; // to hide bkg-color in corners
+    border: 3px solid;
+    border-image-source: url(http://www.cfdesigner.com/codepen/border-wood.png);
+    border-image-slice: 5;
+    border-image-width: 5;
+    border-image-repeat: stretch;
+    cursor: pointer;
+    image-rendering: pixelated;
+    margin-top: 375;
+    margin-left: 20;
+    padding: 16px;
+    text-align: center;
+    
+    &:hover {
+      background-color: #dec594;
+      color: #570000;
+    }
+  }
