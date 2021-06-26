@@ -31,6 +31,9 @@ function App() {
 
   return (
     <>
+      <Route path='/' exact>
+        <FrontPage />
+      </Route>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -67,9 +70,7 @@ function App() {
       <Route path='/all/notes/:id'>
         <AllNotes />
       </Route>
-      <Route path='/' exact>
-        <FrontPage />
-      </Route>
+
       <Route path='/home' exact>
         <Home />
       </Route>

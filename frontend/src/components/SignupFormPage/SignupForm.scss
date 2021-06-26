@@ -1,16 +1,18 @@
 .container-div{
     box-sizing: border-box;
+    background-image: url('../../images//signup.jpg');
+    min-height: 100%; 
 }
 
 
 .signup-form {
-    width: 100%;
-    height: 200%;
+    display: flex;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;
+    display: inline-block;
+    color: rgb(17, 10, 10);
+    margin-top: 60px;
 }
 
 .form-wrapper {
@@ -19,15 +21,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 400px;
-    height: 600px;
+    width: 500px;
+    height: 650px;
+    bottom: 300;
     border-radius: 30px;
     background-size: 600% 100%;
     animation: gradient 20s linear infinite;
     animation-direction: alternate;
     opacity: 0.9;
     box-shadow: 2px 2px 10px 5px #555;
-    margin-top: 300px;
   }
   @keyframes gradient {
     0% {
@@ -52,7 +54,7 @@
 
   .title{
     display: block;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     font-size: 24px;
     font-weight: bold;
   }
@@ -79,7 +81,7 @@
     border: 1px solid #0e1d26;
   }
   
-  .btn {
+  .sign-up-btn {
     border: none;
     background: #333;
     color: #ffffff;
@@ -94,8 +96,8 @@
     transition: color 0.3s, background 0.3s, border 0.3s;
   }
   
-  .btn:focus,
-  .btn:hover {
+  .sign-up-btn:focus,
+  .sign-up-btn:hover {
     outline: none;
     color: #2d8cc7;
     background: #b3eedf;

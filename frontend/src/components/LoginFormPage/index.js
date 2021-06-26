@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import './LoginForm.css';
+import './LoginForm.scss';
 
 function LoginFormPage() {
     const dispatch = useDispatch();
@@ -26,32 +26,31 @@ function LoginFormPage() {
     }
 
     return (
-        <div className='container-div'>
-            <form onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul>
-                <label>
-                    Username or Email
+        <div className='login-div'>
+            <form onSubmit={handleSubmit} className='login-form'>
+                <div className='username-div'>
                     <input
-                        type="text"
+                        type='text'
                         value={credential}
+                        placeholder='username'
+                        className='username-input'
                         onChange={(e) => setCredential(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    Password
+                    >
+                    </input>
+                </div>
+                <div className='password-div'>
                     <input
-                        type="password"
+                        type='text'
                         value={password}
+                        placeholder='password'
+                        className='password-input'
                         onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </label>
-                <button type="submit">Log In</button>
+                    >
+                    </input>
+                </div>
+                <button class="btn btn--stripe">Login</button>
             </form>
-        </div>
+        </div >
     );
 }
 
