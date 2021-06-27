@@ -3,28 +3,28 @@
   }
 
 .fire {
-    height: 80%;
-    width: 30%;
+    height: 100%;
+    width: 40%;
+    margin-left: 550;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
 }
 .edit-form {
+  display: flex;
+  flex-direction: column;
     background-color: rgba(47,49,60,255);
     position: absolute;
-    right: 768;
+    right: 760;
     top: 150;
     margin: 20px;
-    // max-width: 300px;
-    width: 300px;
+    max-width: 400px;
+    width: 350px;
     padding: 16px;
+    text-align: center;
 }
 
-// .wrapper-div{
-//     display: flex;
-//     align-items: center;
-// }
 .form-name
 {
     border-top-style: hidden;
@@ -84,7 +84,7 @@
   
   .pixel {
     line-height: 0;
-    right: 140;
+    right: 100;
     image-rendering: optimizeSpeed;
     image-rendering: -moz-crisp-edges; /* Firefox */
     image-rendering: -o-crisp-edges; /* Opera */
@@ -167,3 +167,198 @@
     width: auto;
     z-index: 2;
   }
+
+  .pixel, .pixel2 {
+    font-size: 25px;
+    color: white;
+    height: auto;
+    margin: 10px;
+    font-family: 'VT323';
+    
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    text-transform: uppercase;
+    
+    cursor: pointer;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .pixel:active, .pixel2:active {
+    top: 2px;
+  }
+  
+
+
+
+
+.library-btn, .chapter-btn {
+  font-size: 25px;
+  color: white;
+  height: auto;
+  margin: 10px;
+  bottom:600;
+  font-family: 'VT323';
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  text-transform: uppercase;
+  
+  cursor: pointer;
+  
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.library-btn:active, .chapter-btn:active {
+  top: 2px;
+}
+
+.library-btn {
+  line-height: 0;
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -o-crisp-edges; /* Opera */
+  image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+  
+  border-style: solid;
+  border-width: 20px;
+  -moz-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+  -webkit-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+  -o-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+  border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+}
+
+.library-btn p {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: auto;
+  text-align: center;
+  margin: -20px -20px;
+  line-height: 20px;
+  padding: 10px 20px;
+  
+    background: #000000;
+    background:
+        linear-gradient(135deg, transparent 10px, #000000 0) top left,
+        linear-gradient(225deg, transparent 10px, #000000 0) top right,
+        linear-gradient(315deg, transparent 10px, #000000 0) bottom right,
+        linear-gradient(45deg,  transparent 10px, #000000 0) bottom left;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-image:
+        radial-gradient(circle at 0 0, rgba(204,0,0,0) 14px, #000000 15px),
+        radial-gradient(circle at 100% 0, rgba(204,0,0,0) 14px, #000000 15px),
+        radial-gradient(circle at 100% 100%, rgba(204,0,0,0) 14px, #000000 15px),
+        radial-gradient(circle at 0 100%, rgba(204,0,0,0) 14px, #000000 15px);
+}
+
+.chapter-btn {
+  position: relative;
+  display: block;
+  margin: 10px;
+  font-family: 'VT323';
+  text-transform: uppercase;
+  font-size: 25px;
+  color: white;
+}
+
+.chapter-btn::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: -10px;
+  right: -10px;
+  background: black;
+  z-index: -1;
+}
+
+.chapter-btn::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: -6px;
+  right: -6px;
+  background: black;
+  z-index: -1;
+}
+
+.chapter-btn {
+  padding: 10px 10px;
+  position: relative;
+  background: black;
+  width: auto;
+  z-index: 2;
+}
+
+.library-btn, .chapter-btn {
+  font-size: 25px;
+  color: white;
+  height: auto;
+  margin: 10px;
+  font-family: 'VT323';
+  
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  text-transform: uppercase;
+  
+  cursor: pointer;
+  
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.library-btn:active, .chapter-btn:active {
+  top: 2px;
+}
+
+
+////////////////////////////////////////////////
+
+
+.lib-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+    margin: 50px;
+    display: block;
+    width: 400px;
+    text-align: center;
+    top:250;
+    right:115;
+  
+}
+.chap-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+    margin: 50px;
+    display: block;
+    width: 400px;
+    text-align: center;
+    top:250;
+    left:300;
+    
+}
