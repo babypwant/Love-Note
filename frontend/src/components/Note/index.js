@@ -17,7 +17,6 @@ works only on the first instance of loading the page
 */
 
 function Note() {
-    const [description, setDescription] = useState('')
     const sessionUser = useSelector(state => state.session.user);
     const [name, setname] = useState('')
     const [errors, setErrors] = useState([]);
@@ -37,6 +36,8 @@ function Note() {
         const arrayNums = params.slice((7))
         const stringNums = arrayNums.join('')
         const notebookId = parseInt(stringNums)
+        var contenteditable = document.querySelector('[contenteditable]'),
+            description = contenteditable.textContent;
         if (name.length > 0 && description.length > 0) {
             history.push(`/all/notes/${notebookId}`)
             return dispatch(sessionActions.noteCreate({ name, notebookId, description }))
@@ -49,27 +50,41 @@ function Note() {
 
     };
 
+    const allNotes = (e) => {
+        e.preventDefault();
+        const where = history.location.pathname;
+        const params = Object.values(where)
+        const arrayNums = params.slice((7))
+        const stringNums = arrayNums.join('')
+        const notebookId = parseInt(stringNums)
+        history.push(`/all/notes/${notebookId}`)
+    }
 
     return (
-        <div className='container-div'>
-            <form >
-                <label>name:</label>
+        <div className='create-note-div'>
+            <div className='save-note-container'>
+                <div className='pixel' onClick={onSubmit} ><p>{'Save Note =>'}</p></div>
+            </div>
+            <div className='view-notes-container'>
+                <div className='pixel' onClick={allNotes}><p>{'<= view all notes'}</p></div>
+            </div>
+            <div className='note-title-div' value={name}>
                 <input
-                    type='text'
-                    value={name}
+                    placeholder='Title'
+                    className='note-title-holder'
+
                     onChange={(e) => setname(e.target.value)}
-                ></input>
-                <input
-                    type="text"
-                    className='notebook-input'
-                    placeholder='awesome detailed description'
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    required
-                />
-            </form>
-            <button onClick={onSubmit}>Create the dang thing</button>
-            <button>Delete the darn thing</button>
+                >
+                </input>
+            </div>
+            <div class="pages" >
+                <div class="page">
+                    <div class="page-editable" contentEditable="true">
+                    </div>
+                </div>
+            </div>
+            <div>
+            </div>
         </div>
     );
 }

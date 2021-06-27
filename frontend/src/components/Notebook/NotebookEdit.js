@@ -43,6 +43,11 @@ function NotebookEdit() {
         history.push(`/notes/${id}`)
     }
 
+    const library = (e) => {
+        e.preventDefault();
+        history.push('/home')
+    }
+
     return (
         <div className='edit-container'>
             <img src={fire} className='fire' alt="img"></img>
@@ -66,11 +71,17 @@ function NotebookEdit() {
                     ></input>
                 </div>
                 <div class='btn-container' >
-                    <div class="pixel" onClick={onSubmit}><p>Drink water</p></div>
+                    <div class="pixel" onClick={onSubmit}><p>Update</p></div>
                 </div>
-                <button onClick={newNote}>Add a new chapter</button>
-                <button>Nvm im boring and hate books</button>
+                <div className='chap-container'>
+                    <div className='pixel' onClick={newNote}><p>Add a new chapter</p></div>
+                </div>
+                <div className='lib-container'>
+                    <div className='pixel' onClick={library}><p>Back to library</p></div>
+                </div>
             </form>
+            <div>
+            </div>
         </div >
 
     );

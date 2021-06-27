@@ -67,7 +67,7 @@ function Home() {
                             <h2 className='notebook-name'>{notebook.name}</h2>
                             <h2 className='notebook-description'>{notebook.description}</h2>
                             <button type='submit' value={notebook.id} onClick={onSubmit} className='border' > Destroy Book </button>
-                            <button type='submit' value={notebook.id} onClick={(editNotebook)} className='border'> Add a new Chapter</button>
+                            <button type='submit' value={notebook.id} onClick={(editNotebook)} className='border'> View Book</button>
                         </div>
                     )
                 })}
