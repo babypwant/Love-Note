@@ -12,7 +12,7 @@ function Navigation({ isLoaded }) {
             <div className='navbar-left'>
                 <NavLink exact to="/home" className='navbar-btn fas fa-home'>Home</NavLink>
                 <NavLink to='/notebooks' className='create-a-book fas fa-book'>New Notebook</NavLink>
-                <NavLink to='/note' className='navbar-btn far fa-sticky-note'>New Note</NavLink>
+                <NavLink to='/home' className='navbar-btn far fa-sticky-note'>Library</NavLink>
             </div>
             <div className='navbar-right'>
                 <ProfileButton user={sessionUser} />
