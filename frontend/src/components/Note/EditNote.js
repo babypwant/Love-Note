@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import './AllNotes.scss';
+import './EditNotes.scss';
 import * as sessionActions from "../../store/notes";
 import { getNotes } from '../../store/notes'
 import { getUsers } from '../../store/users'
 import { getNotebooks } from '../../store/notebooks';
 import { useHistory, useParams } from 'react-router';
+import { compose } from 'redux';
 
 //remember to make a hidden field with userId set from state
 //so we can assoc. userId into our table
@@ -26,54 +27,73 @@ function EditNote() {
     const dispatch = useDispatch();
     const history = useHistory()
     const { id } = useParams();
-    let noteList;
+    const noteId = parseInt(id)
+    const note = notes.find((note) => note.id === noteId)
     const allNotes = notes.filter(function (note) {
         return note.notebookId === Number(id);
     })
+    let noteDescription;
 
     useEffect(() => {
-        dispatch(getNotes());
         dispatch(getUsers())
         dispatch(getNotebooks())
+        dispatch(getNotes());
+
+
 
     }, [dispatch, sessionUser])
 
-
-    const onSubmit = (e) => {
+    const backToNotes = (e) => {
         e.preventDefault();
-        const noteId = e.target.value
-        console.log(noteId)
-        history.push(`/all/notes/${id}`)
+        const notebookId = note.notebookId
+        history.push(`/all/notes/${notebookId}`)
     };
 
+    if (note != null) {
+        noteDescription = note.description
+    }
 
-    const onClick = (e) => {
+    const updateNote = (e) => {
         e.preventDefault();
-        const noteId = parseInt(id)
-        const note = notes.find((note) => note.id === noteId)
         const notebookId = note.notebookId
         history.push(`/all/notes/${notebookId}`)
         return dispatch(sessionActions.noteEdit({ id, name, description }))
     }
 
     return (
-        <div>
-            <h2>New name</h2>
-            <input
-                type='text'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            >
-            </input>
-            <h2>New content</h2>
-            <input
-                type='text'
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-            >
-            </input>
+        <div className='create-note-div'>
+            <div className='save-note-container'>
+                <div className='pixel' onClick={updateNote} ><p>{'Update Note =>'}</p></div>
+            </div>
+            <div className='view-notes-container'>
+                <div className='pixel' onClick={backToNotes}><p>{'<= Back to notes'}</p></div>
+            </div>
+            <div className='note-title-div' value={name}>
+                <input
+                    placeholder={note.name}
+                    className='note-title-holder'
+
+                    onChange={(e) => setName(e.target.value)}
+                >
+                </input>
+            </div>
+            <div className="pages" >
+                <div className="page">
+                    <div className="user-editable" >
+                        <div className=''>
+                            <textarea
+                                type='textbox'
+                                className='user-note-edit'
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                            >
+                                {`${note.description}`}
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div>
-                <button onClick={onClick}> Change lore</button>
             </div>
         </div>
     );

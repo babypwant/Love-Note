@@ -7,6 +7,7 @@ import { getNotes } from '../../store/notes'
 import { getUsers } from '../../store/users'
 import { getNotebooks } from '../../store/notebooks';
 import { useHistory, useParams } from 'react-router';
+import paper from '../../images/paper.png'
 
 //remember to make a hidden field with userId set from state
 //so we can assoc. userId into our table
@@ -52,32 +53,38 @@ function AllNotes() {
 
     const onClick = (e) => {
         e.preventDefault();
-        const noteId = e.target.value
+        const noteId = e.target.id
         history.push(`/edit/note/${noteId}`)
     }
     const deleteLore = (e) => {
         e.preventDefault();
-        const value = e.target.value
-
-        const note = notes.find((note) => note.id = value)
-        console.log(note)
+        const value = e.target.id
+        const noteId = Number(value)
+        const note = notes.find((note) => note.id === noteId)
         return dispatch(sessionActions.noteDelete(note))
             .catch(async (res) => {
                 const data = await res.json();
-                console.log(data)
             });
     }
 
     return (
-        <div>
-            {allNotes.map((note) => {
-                return <div >
-                    <h2>{note.name}</h2>
-                    <button onClick={onClick} key={note.id} value={note.id}>Edit Chapter </button>
-                    <button onClick={deleteLore} value={note.id}>Delete lore</button>
+        <div className='all-notes-page'>
+            <div className='moon-container'>
+                <div id="moon"></div>
+                <div className='paper-container'>
+                    {allNotes.map((note) => {
+                        return <div value={note.id}>
+                            <h2 >{note.name}</h2>
+                            <img src={paper} className='paper-img'></img>
+                            <div className='notes-actions-btn' value={note.id}>
+                                <div onClick={deleteLore} value={note.id} id={note.id} className='pixel'>Delete lore</div>
+                                <div onClick={onClick} key={note.id} id={note.id} value={note.id} className='both-btn'>Edit Chapter </div>
+                            </div>
+                        </div>
+                    })
+                    }
                 </div>
-            })
-            }
+            </div>
         </div>
     );
 }
