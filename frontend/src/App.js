@@ -46,10 +46,7 @@ function App() {
         </Switch>
       )}
       <Route path='/notebooks'>
-        <div style={{
-          height: '100%',
-          backgroundImage: `url(${notebookBackground})`
-        }}>
+        <div>
           <Notebook />
         </div>
       </Route>

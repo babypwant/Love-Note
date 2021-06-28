@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import './Notebook.css';
+import './Notebook.scss';
 import * as sessionActions from "../../store/notebooks";
 import { getNotebooks } from '../../store/notebooks'
 import { useHistory } from 'react-router-dom'
+import campfire from '../../images/campsite.jpg'
+import totoro from '../../images/totoro.gif'
+import book from '../../images/book1.png'
 
 //Main bug to fix for tommorrow:
 
@@ -51,22 +54,22 @@ function Notebook() {
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                 </div>
-                <label>Notebook Name</label>
-                <div className='input-div'>
+                <h2>Book Name</h2>
+                <div className='name-and-desc'>
                     <input
                         type="text"
                         className='notebook-input'
-                        placeholder='cool notebook name'
+                        placeholder='Awesome name'
                         value={name}
                         onChange={(e) => setname(e.target.value)}
                         required
                     />
                 </div>
-                <div className='input-div'>
+                <div className='name-and-desc'>
                     <input
                         type="text"
                         className='notebook-input'
-                        placeholder='awesome detailed description'
+                        placeholder='cool cescription'
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         required
@@ -85,10 +88,21 @@ function Notebook() {
 
 
     return (
-        <div>
-            {notebookList}
-            <div>
-                <button>| Delete |</button>
+        <div className='create-notebook-container'>
+            <div className='totoro-container'>
+                <img src={totoro}></img>
+            </div>
+            <div className='brown-square-container'>
+                <img src={book} className='brown-sqr'></img>
+            </div>
+            <div className='totoro-speak-container'>
+                <h2>" Tell us a story please!" </h2>
+            </div>
+            <div className='creation-form-container'>
+                {notebookList}
+                <div className='campfire-img-div'>
+                    <img src={campfire}></img>
+                </div>
             </div>
         </div>
 

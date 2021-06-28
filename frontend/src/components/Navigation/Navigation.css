@@ -8,6 +8,8 @@ html, body{
   padding:0px;
 }
   .navbar-wrapper {
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
     display: flex;
     height: 40px;
     justify-content: space-between;
@@ -17,6 +19,7 @@ html, body{
 
   .navbar-left,
 .navbar-right {
+  
   display: inline-block;
   width: 250px;
   display: flex;
@@ -34,15 +37,31 @@ html, body{
 }
 
 .navbar-btn {
+  text-align: center;
   color: white;
   text-decoration: none;
   display: inline-block;
-  font-weight: 500;
+  font-weight: 600;
   border-bottom: 1px solid rgba(0, 0, 0, 0);
   transition: color 0.5s, border-bottom 0.5s;
 }
 
 .navbar-btn:hover {
   color: #eaeff2;
+  background-color: rgb(112, 112, 184);
+  border-bottom: 1px solid #eaeff2;
+}
+.create-a-book {
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  transition: color 0.5s, border-bottom 0.5s;
+}
+.create-a-book:hover {
+  color: #eaeff2;
+  background-color: rgb(112, 112, 184);
   border-bottom: 1px solid #eaeff2;
 }

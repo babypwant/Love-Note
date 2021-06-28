@@ -1,0 +1,88 @@
+/*
+Come back to css
+*/
+
+.create-notebook-container{
+    position: relative;
+    display: flex;
+    background-color: #0f1024;
+    height: 100%;
+    width: 2000px;
+    align-items: normal;
+    text-align: center;
+}
+
+.notebook-form {
+    flex-direction: column;
+    height: 200;
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+.btn-div{
+    margin-top: 60px;
+}
+
+.campfire-img-div {
+    position: absolute;
+     margin-top:200;
+     margin-left: 500;
+}
+
+.creation-form-container {
+     margin-left: 720;
+     margin-top:170;
+}
+
+.notebook-input:focus, textarea:focus, select:focus{    
+    outline: none;
+    background: transparent;
+    border: none;
+}
+
+.notebook-input {
+    font-size: 24px;
+    border:none;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+
+/*
+TOTORO CONTAINER
+*/
+
+.totoro-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:500;
+}
+
+.totoro-speak-container{
+    position: absolute;
+    color: white;
+    height: 100%;
+    width: 100%;
+    top:600;
+    right:100;
+}
+.creation-form-container{
+    position: absolute;
+    left: 30;
+}
+.brown-square-container{
+    position: absolute;
+    top:60;
+    left: 720;
+}
+.brown-sqr {
+    height: 30%;
+}
+.name-and-desc {
+    margin-left: 140;
+
+}
