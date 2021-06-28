@@ -2,7 +2,7 @@
 
 
 .logged-in {
-    background-image: url('../../images/city.gif');
+    background-image: url('../../images/optional.gif');
     color: black; 
 	height: 100%;
 	width: 100%;
@@ -24,7 +24,7 @@
 
 .notebook-name {
     position: absolute;
-    font-size: auto;
+    font-size: 18px;
     margin-top: 50;
     margin-left: 110;
     
@@ -32,13 +32,13 @@
 .notebook-description {
     position: absolute;
     margin-top: 350;
-    margin-left: 150;
+    margin-left: 130;
 
 }
 
 .item-book-container {
     text-align: center;
-     margin-top: 50;
+    margin-top: 50;
 }
 
 .border {

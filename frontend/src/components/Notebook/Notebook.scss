@@ -30,14 +30,15 @@ Come back to css
 }
 
 .creation-form-container {
+    text-align: center;
      margin-left: 720;
      margin-top:170;
 }
 
 .notebook-input:focus, textarea:focus, select:focus{    
-    outline: none;
-    background: transparent;
-    border: none;
+    // outline: none;
+    // background: transparent;
+    // border: none;
 }
 
 .notebook-input {
@@ -48,6 +49,9 @@ Come back to css
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+}
+.notebook-input::placeholder {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -72,7 +76,7 @@ TOTORO CONTAINER
 }
 .creation-form-container{
     position: absolute;
-    left: 30;
+    left: 20;
 }
 .brown-square-container{
     position: absolute;
@@ -85,4 +89,9 @@ TOTORO CONTAINER
 .name-and-desc {
     margin-left: 140;
 
+}
+
+.create-a-book-btn {
+    font-family: Helvetica, Arial, Sans-Serif;
+    background-color: grey;
 }

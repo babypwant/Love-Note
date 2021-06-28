@@ -76,7 +76,7 @@ function Notebook() {
                     />
                 </div>
                 <div className='btn-div'>
-                    <button>| Create |</button>
+                    <button className='create-a-book-btn'>| Create |</button>
                 </div>
 
             </form>
