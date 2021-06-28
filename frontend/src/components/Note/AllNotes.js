@@ -73,12 +73,12 @@ function AllNotes() {
                 <div id="moon"></div>
                 <div className='paper-container'>
                     {allNotes.map((note) => {
-                        return <div value={note.id}>
-                            <h2 >{note.name}</h2>
+                        return <div clasname='piece-of-paper' key={note.id} value={note.id} id={note.id}>
+                            <h2 key={note.id}>{note.name}</h2>
                             <img src={paper} className='paper-img'></img>
                             <div className='notes-actions-btn' value={note.id}>
-                                <div onClick={deleteLore} value={note.id} id={note.id} className='pixel'>Delete lore</div>
-                                <div onClick={onClick} key={note.id} id={note.id} value={note.id} className='both-btn'>Edit Chapter </div>
+                                <div onClick={deleteLore} value={note.id} id={note.id} className='pixel'><p id={note.id}>Delete lore</p></div>
+                                <div onClick={onClick} key={note.id} id={note.id} value={note.id} className='pixel'><p id={note.id}>Edit Chapter</p> </div>
                             </div>
                         </div>
                     })
