@@ -5,7 +5,7 @@ import './Note.scss';
 import * as sessionActions from "../../store/notes";
 import { getNotes } from '../../store/notes'
 import { getUsers } from '../../store/users'
-import { useHistory, useParams } from 'react-router';
+import { useHistory } from 'react-router';
 
 //remember to make a hidden field with userId set from state
 //so we can assoc. userId into our table
