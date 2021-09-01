@@ -56,23 +56,29 @@ function Home() {
         history.push(`/edit/notebook/${id}`)
     }
 
+    {/* <h2 className='notebook-description'>{notebook.description}</h2>
+    <button type='submit' value={notebook.id} onClick={onSubmit} className='border' > Destroy Book </button>
+    <button type='submit' value={notebook.id} onClick={(editNotebook)} className='border'> View Book</button> */}
 
     return (
         <div className='logged-in'>
             <div className='rows'>
+
                 {notebooks.map((notebook) => {
                     return (
-                        <div className='item-book-container' value={notebook} key={`book-${notebook.id}`}>
-                            <img src={notebookImage} className='book' alt="img" />
-                            <h2 className='notebook-name'>{notebook.name}</h2>
-                            <h2 className='notebook-description'>{notebook.description}</h2>
-                            <button type='submit' value={notebook.id} onClick={onSubmit} className='border' > Destroy Book </button>
-                            <button type='submit' value={notebook.id} onClick={(editNotebook)} className='border'> View Book</button>
+                        <div class="container product-container">
+                            <div class="product-box">
+                                <div id="box-header">
+                                </div>
+                                <div id="box-body">
+                                    <p class="text-center">Great idea come from great tea</p>
+                                </div>
+                            </div>
                         </div>
                     )
                 })}
             </div>
-        </div >
+        </div>
 
     );
 }

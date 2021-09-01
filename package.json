@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/babypwant/authenticate-me/issues"
   },
-  "homepage": "https://github.com/babypwant/authenticate-me#readme"
+  "homepage": "https://github.com/babypwant/authenticate-me#readme",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  }
 }

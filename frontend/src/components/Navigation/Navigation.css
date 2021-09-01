@@ -23,14 +23,8 @@ html, body{
   display: inline-block;
   width: 250px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-}
-.navbar-left {
-  margin-left: 15px;
-}
-.navbar-right {
-  margin-right: 15px;
 }
 .pipechar {
   pointer-events: none;
@@ -64,4 +58,84 @@ html, body{
   color: #eaeff2;
   background-color: rgb(112, 112, 184);
   border-bottom: 1px solid #eaeff2;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  height: 64px;
+  padding: 0 30px;
+  margin: 0px;
+  box-shadow: 0px 1px 4px 0px rgb(0 0 0 / 20%);
+  background-color: black;
+}
+
+
+.signup {
+  color: black;
+  text-decoration: none;
+  align-items: center;
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0px 36px;
+  height: 48px;
+  min-width: 144px;
+  border-radius: 24px;
+  cursor: pointer;
+  background-color: rgb(103, 149, 218);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.login {
+  color: black;
+  text-decoration: none;
+  align-items: center;
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0px 36px;
+  height: 48px;
+  min-width: 144px;
+  border-radius: 24px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 30px;
+  background-color: rgb(65, 117, 228);
+}
+
+.home {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: black;
+  text-decoration: none;
+  align-items: center;
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0px 36px;
+  height: 48px;
+  min-width: 20px;
+  border-radius: 24px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 30px;
+  margin-left: 20px;
+  background-color: rgb(1, 82, 175);
 }
