@@ -1,11 +1,8 @@
-
-
-
 .logged-in {
     background-color: rgb(70, 37, 38);
     color: black; 
-	height: 100%;
-	width: 100%;
+	  height: 100%;
+	  width: 100%;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
 }
@@ -15,18 +12,20 @@
 	  display: flex;
     justify-content: space-around;
     align-self: center;
-    width: 1300px;
+    width: 1200px;
     font-size: auto;
     top:2%;
-    margin-left: 15%;
+    margin-left: 20%;
     height: 90%;
-    background-color: rgb(235, 216, 151);
-    border:1px solid black;
+    background-color: rgba(235, 216, 151, 0.795);
+    -webkit-box-shadow: 0px 0px 22px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 22px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 22px -9px rgba(0, 0, 0, 0.75);
   }
 
 .product-box {
     height: 320px;
-    width: 250px;
+    width: 225px;
     margin: 10% auto;
     border-radius: 0px 100px 0px 0px;
     overflow: hidden;
@@ -59,12 +58,17 @@
   }
   .product-box:hover > #box-header {
     cursor: pointer;
-    background-color: #572c27;
+    background-color: #2e110d;
     color: #fff;
   }
   .product-box:hover {
     cursor: pointer;
     background-color: #f0c561;
-    color: #000000;
+    color: #2e110d;
   }
   
+  .new-notenook-btn{
+    position: absolute;
+    margin-left: 85%;
+    bottom: 15%;
+  }

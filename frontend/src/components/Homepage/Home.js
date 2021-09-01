@@ -45,17 +45,17 @@ function Home() {
         history.push(`/edit/notebook/${id}`)
     }
 
-    /* <h2 className='notebook-description'>{notebook.description}</h2>
-    <button type='submit' value={notebook.id} onClick={onSubmit} className='border' > Destroy Book </button>
-    <button type='submit' value={notebook.id} onClick={(editNotebook)} className='border'> View Book</button> */
-
+    const newNotebook = () => {
+        history.push('/notebooks');
+    };
     return (
         <div className='logged-in'>
+
             <div className='rows'>
                 {notebooks.map((notebook) => {
                     return (
-                        <div onClick={() => editNotebook(notebook.id)} class="container product-container" value={notebook.id}>
-                            <div class="product-box" value={notebook.id}>
+                        <div class="container product-container" value={notebook.id}>
+                            <div onClick={() => editNotebook(notebook.id)} class="product-box" value={notebook.id}>
                                 <div id="box-header" value={notebook.id}>
                                 </div>
                                 <div id="box-body" value={notebook.id}>
@@ -65,6 +65,11 @@ function Home() {
                         </div>
                     )
                 })}
+            </div>
+            <div className='new-notenook-btn'>
+                <div class='btn-container' >
+                    <div class="pixel" onClick={newNotebook} ><p>New Notebook</p></div>
+                </div>
             </div>
         </div>
 
