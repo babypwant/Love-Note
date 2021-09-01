@@ -90,10 +90,10 @@ function Notebook() {
     return (
         <div className='create-notebook-container'>
             <div className='totoro-container'>
-                <img src={totoro}></img>
+                <img alt={"Totoro character"} src={totoro}></img>
             </div>
             <div className='brown-square-container'>
-                <img src={book} className='brown-sqr'></img>
+                <img alt={"piece of paper"} src={book} className='brown-sqr'></img>
             </div>
             <div className='totoro-speak-container'>
                 <h2>" Tell us a story please!" </h2>
@@ -101,7 +101,7 @@ function Notebook() {
             <div className='creation-form-container'>
                 {notebookList}
                 <div className='campfire-img-div'>
-                    <img src={campfire}></img>
+                    <img alt={"Campfire"} src={campfire}></img>
                 </div>
             </div>
         </div>

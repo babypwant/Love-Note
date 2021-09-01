@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import './AllNotes.scss';
@@ -19,36 +19,29 @@ works only on the first instance of loading the page
 */
 
 function AllNotes() {
-
     const sessionUser = useSelector(state => state.session.user);
-    const notebooks = useSelector(state => Object.values(state.notebooks))
     const notes = useSelector(state => Object.values(state.notes))
     const dispatch = useDispatch();
     const history = useHistory()
     const { id } = useParams();
-    let noteList;
     const allNotes = notes.filter(function (note) {
+        console.log(id)
         return note.notebookId === Number(id);
     })
-
-
-
-
 
     useEffect(() => {
         dispatch(getNotes());
         dispatch(getUsers())
         dispatch(getNotebooks())
-
     }, [dispatch, sessionUser])
 
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        const noteId = e.target.value
-        console.log(noteId)
+    // const onSubmit = (e) => {
+    //     e.preventDefault();
+    //     const noteId = e.target.value
+    //     console.log(noteId)
 
-    };
+    // };
 
 
     const onClick = (e) => {
@@ -64,24 +57,27 @@ function AllNotes() {
         return dispatch(sessionActions.noteDelete(note))
             .catch(async (res) => {
                 const data = await res.json();
+                return data
             });
     }
+    console.log(allNotes)
 
     return (
         <div className='all-notes-page'>
             <div className='moon-container'>
                 <div id="moon"></div>
                 <div className='paper-container'>
-                    {allNotes.map((note) => {
-                        return <div clasname='piece-of-paper' key={note.id} value={note.id} id={note.id}>
-                            <h2 key={note.id}>{note.name}</h2>
-                            <img src={paper} className='paper-img'></img>
-                            <div className='notes-actions-btn' value={note.id}>
-                                <div onClick={deleteLore} value={note.id} id={note.id} className='pixel'><p id={note.id}>Delete lore</p></div>
-                                <div onClick={onClick} key={note.id} id={note.id} value={note.id} className='pixel'><p id={note.id}>Edit Chapter</p> </div>
+                    {
+                        allNotes.map((note) => {
+                            return <div clasname='piece-of-paper' key={note.id} value={note.id} id={note.id}>
+                                <h2 key={note.id}>{note.name}</h2>
+                                <img src={paper} alt={"paper note icon"} className='paper-img'></img>
+                                <div className='notes-actions-btn' value={note.id}>
+                                    <div onClick={deleteLore} value={note.id} id={note.id} className='pixel'><p id={note.id}>Delete lore</p></div>
+                                    <div onClick={onClick} key={note.id} id={note.id} value={note.id} className='pixel'><p id={note.id}>Edit Chapter</p> </div>
+                                </div>
                             </div>
-                        </div>
-                    })
+                        })
                     }
                 </div>
             </div>

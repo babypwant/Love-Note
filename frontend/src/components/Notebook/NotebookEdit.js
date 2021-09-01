@@ -28,8 +28,9 @@ function NotebookEdit() {
         dispatch(getNotebooks());
         if (sessionUser) {
             setUser(sessionUser.id)
+            console.log(userId)
         }
-    }, [dispatch, sessionUser])
+    }, [dispatch, sessionUser, userId])
 
     const onSubmit = () => {
         const notebook = notebooks.find((notebook) => notebook.id = id)

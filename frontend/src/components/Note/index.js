@@ -20,7 +20,6 @@ function Note() {
     const sessionUser = useSelector(state => state.session.user);
     const [name, setname] = useState('')
     const [errors, setErrors] = useState([]);
-    const notebooks = useSelector(state => Object.values(state.notebooks))
     const dispatch = useDispatch();
     const history = useHistory()
 
@@ -44,6 +43,8 @@ function Note() {
                 .catch(async (res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
+                    console.log(errors)
+                    return data;
                 });
         }
         return setErrors(['A great book needs a great name']);

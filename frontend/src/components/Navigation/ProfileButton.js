@@ -8,10 +8,10 @@ function ProfileButton({ user }) {
     const [showMenu, setShowMenu] = useState(false);
     const history = useHistory();
 
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    };
+    // const openMenu = () => {
+    //     if (showMenu) return;
+    //     setShowMenu(true);
+    // };
 
     useEffect(() => {
         if (!showMenu) return;
