@@ -73,7 +73,6 @@ function Note() {
                 <input
                     placeholder='Title'
                     className='note-title-holder'
-
                     onChange={(e) => setname(e.target.value)}
                 >
                 </input>
