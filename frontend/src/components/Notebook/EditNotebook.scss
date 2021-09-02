@@ -362,3 +362,90 @@
     left:300;
     
 }
+///////////////////////////////////////////////////////////@at-root
+
+.notes {
+  background: #20130c;
+  padding: 20px;
+  overflow: scroll;
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.note {
+  font-family: Verdana, Arial, Sans-Serif;
+  height: 11in;
+  width: 8.5in;
+  background: rgb(252, 232, 189);
+  margin: auto;
+  text-align: left;
+  display: block;
+  box-shadow: 5px 5px 5px 0;
+}
+
+.page-editable {
+  outline: none;
+  padding: 4em 4em;
+}
+
+.note-title-div {
+display: flex;
+justify-content: center;
+  background: #a8a3a0;
+}
+.note-title-holder {
+  min-height: 40;
+  min-width: 160px;
+margin-top:20;
+font-size: 35px;;
+background: rgba(0, 0, 0, 0);
+border: none;
+outline: none;
+}
+
+.save-note-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+    margin: 50px;
+    display: block;
+    width: 400px;
+    text-align: center;
+    top:750;
+    right: 10;
+    
+}
+
+.view-notes-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+    margin: 50px;
+    display: block;
+    width: 400px;
+    text-align: center;
+    top:800;
+    right: 10;
+    
+}
+.note-img{
+height: 20%;
+width: 20%;
+}
+
+.piece-of-note{
+  width: 100px;
+}
+.notebook-des-container{
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  background-color: red;
+}
+.notebook-notes-cotainer{
+  display: flex;
+  justify-content: space-between;
+  height: 90%;
+  background-color: blue;
+}

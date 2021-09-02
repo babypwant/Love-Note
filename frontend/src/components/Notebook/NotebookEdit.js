@@ -5,14 +5,10 @@ import './EditNotebook.scss';
 import * as sessionActions from "../../store/notebooks";
 import { getNotebooks } from '../../store/notebooks'
 import { useHistory } from 'react-router-dom'
-import fire from '../../images/campfire.png'
 import { useParams } from 'react-router';
-//Main bug to fix for tommorrow:
+import { getNotes } from '../../store/notes';
+import paper from '../../images/paper.png'
 
-//Id is not reliable and need to go back to notebook/index.js and fix so I can
-//realiably get Id's 
-//Also on the home page, we need to figure out how to cause a rerender
-//after we delete/edit/ or create a book
 
 function NotebookEdit() {
     const [name, setname] = useState('')
@@ -20,16 +16,23 @@ function NotebookEdit() {
     const [description, setDescription] = useState('')
     const sessionUser = useSelector(state => state.session.user);
     const notebooks = useSelector(state => Object.values(state.notebooks))
+    const notes = useSelector(state => Object.values(state.notes))
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams()
+    const allNotes = notes.filter(function (note) {
+        console.log(id)
+        return note.notebookId === Number(id);
+    })
 
     useEffect(() => {
         dispatch(getNotebooks());
         if (sessionUser) {
             setUser(sessionUser.id)
+            console.log(userId)
         }
-    }, [dispatch, sessionUser])
+        dispatch(getNotes());
+    }, [dispatch, sessionUser, userId])
 
     const onSubmit = () => {
         const notebook = notebooks.find((notebook) => notebook.id = id)
@@ -49,40 +52,49 @@ function NotebookEdit() {
     }
 
     return (
-        <div className='edit-container'>
-            <img src={fire} className='fire' alt="img"></img>
-            <form className='edit-form'>
-                <div>
-                    <input
-                        type='text'
-                        placeholder='Super cool new name'
-                        className='form-name'
-                        value={name}
-                        onChange={(e) => setname(e.target.value)}
-                    ></input>
+        <div className='create-note-div'>
+            <div className='save-note-container'>
+                <div className='pixel' onClick={onSubmit} ><p>{'Save Note =>'}</p></div>
+            </div>
+            <div className='view-notes-container'>
+                <div className='pixel' ><p>{'<= view all notes'}</p></div>
+            </div>
+            <div className='note-title-div' value={name}>
+                <input
+                    placeholder='Title'
+                    className='note-title-holder'
+                    onChange={(e) => setname(e.target.value)}
+                >
+                </input>
+            </div>
+            <div class="notes" >
+                <div class="note">
+                    <div className='note-container'>
+                        <div className='notebook-des-container'>
+                            Description
+                        </div>
+                        <div className='notebook-notes-cotainer'>
+
+                            {
+                                allNotes.map((note) => {
+                                    return (
+                                        <div key={note.id} value={note.id} id={note.id}>
+                                            <img src={paper} alt={"paper note icon"} className='note-img'>
+                                            </img>
+                                            <h2 key={note.id}>{note.name}</h2>
+                                            <div className='notes-actions-btn' value={note.id}>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
                 </div>
-                <div >
-                    <input
-                        type='text'
-                        placeholder='         new lore?'
-                        value={description}
-                        onChange={(e) => { setDescription(e.target.value) }}
-                        className='description'
-                    ></input>
-                </div>
-                <div class='btn-container' >
-                    <div class="pixel" onClick={onSubmit}><p>Update</p></div>
-                </div>
-                <div className='chap-container'>
-                    <div className='pixel' onClick={newNote}><p>Add a new chapter</p></div>
-                </div>
-                <div className='lib-container'>
-                    <div className='pixel' onClick={library}><p>Back to library</p></div>
-                </div>
-            </form>
+            </div>
             <div>
             </div>
-        </div >
+        </div>
 
     );
 }

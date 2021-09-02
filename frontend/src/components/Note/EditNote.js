@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import './EditNotes.scss';
@@ -7,7 +7,6 @@ import { getNotes } from '../../store/notes'
 import { getUsers } from '../../store/users'
 import { getNotebooks } from '../../store/notebooks';
 import { useHistory, useParams } from 'react-router';
-import { compose } from 'redux';
 
 //remember to make a hidden field with userId set from state
 //so we can assoc. userId into our table
@@ -22,17 +21,12 @@ function EditNote() {
     const [name, setName] = useState();
     const [description, setDescription] = useState();
     const sessionUser = useSelector(state => state.session.user);
-    const notebooks = useSelector(state => Object.values(state.notebooks))
     const notes = useSelector(state => Object.values(state.notes))
     const dispatch = useDispatch();
     const history = useHistory()
     const { id } = useParams();
     const noteId = parseInt(id)
     const note = notes.find((note) => note.id === noteId)
-    const allNotes = notes.filter(function (note) {
-        return note.notebookId === Number(id);
-    })
-    let noteDescription;
 
     useEffect(() => {
         dispatch(getUsers())
@@ -48,10 +42,6 @@ function EditNote() {
         const notebookId = note.notebookId
         history.push(`/all/notes/${notebookId}`)
     };
-
-    if (note != null) {
-        noteDescription = note.description
-    }
 
     const updateNote = (e) => {
         e.preventDefault();

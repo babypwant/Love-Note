@@ -16,6 +16,7 @@ router.post('/', asyncHandler(async (req, res) => {
     const note = await Note.noteCreate({
         name, notebookId, description
     })
+    console.log(note)
 
     return res.json({
         note,

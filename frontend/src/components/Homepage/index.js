@@ -25,6 +25,7 @@ function FrontPage() {
         return dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
                 const data = await res.json();
+                return data;
             });
     }
 

@@ -14,10 +14,6 @@ import FrontPage from "./components/Homepage";
 import EditNote from "./components/Note/EditNote";
 
 
-///Backgrounds
-import notebookBackground from '../src/images/LzRdnr.jpg'
-///
-
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);

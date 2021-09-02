@@ -1,63 +1,74 @@
-
-
-
 .logged-in {
-    background-image: url('../../images/optional.gif');
+    background-color: rgb(70, 37, 38);
     color: black; 
-	height: 100%;
-	width: 100%;
-    
+	  height: 100%;
+	  width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
 }
 
 .rows {
     position: relative;
-	display: flex;
+	  display: flex;
     justify-content: space-around;
-    width: 1500px;
+    align-self: center;
+    width: 1100px;
     font-size: auto;
-}
-.book {
-    position: absolute;
-    width: 375px;
-    height: 375px;
-}
+    top:2%;
+    margin-left: 20%;
+    height: 90%;
+    background-color: rgba(235, 216, 151, 0.795);
+    -webkit-box-shadow: 0px 0px 22px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 22px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 22px -9px rgba(0, 0, 0, 0.75);
+  }
 
-.notebook-name {
-    position: absolute;
-    font-size: 18px;
-    margin-top: 50;
-    margin-left: 110;
-    
-}
-.notebook-description {
-    position: absolute;
-    margin-top: 350;
-    margin-left: 130;
+.product-box {
+    height: 320px;
+    width: 225px;
+    margin: 10% auto;
+    border-radius: 0px 100px 0px 0px;
+    overflow: hidden;
+    background-color: #fff0ca;
+    transition: 0.5s;
+    -webkit-box-shadow: 0px 0px 22px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 22px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 22px -9px rgba(0, 0, 0, 0.75);
+  }
 
-}
-
-.item-book-container {
+  #box-header {
+    background-color: #ffcf5a;
+    height: 125px;
+    border-radius: 0px 0px 50% 50%;
+    transition: 0.5s;
+  }
+  #box-header h3 {
+    padding-top: 40px;
+    color: #0000;
+  }
+  #box-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
-    margin-top: 50;
-}
-
-.border {
-    background-color: #fdeac6;
-    border-radius: 10px; // to hide bkg-color in corners
-    border: 3px solid;
-    border-image-source: url(http://www.cfdesigner.com/codepen/border-wood.png);
-    border-image-slice: 5;
-    border-image-width: 5;
-    border-image-repeat: stretch;
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .product-box:hover > #box-header {
     cursor: pointer;
-    image-rendering: pixelated;
-    margin-top: 400;
-    margin-left: 50;
-    padding: 16px;
-    text-align: center;
-    
-    &:hover {
-      background-color: #dec594;
-      color: #570000;
-    }
+    background-color: #2e110d;
+    color: #fff;
+  }
+  .product-box:hover {
+    cursor: pointer;
+    background-color: #f0c561;
+    color: #2e110d;
+  }
+  
+  .new-notenook-btn{
+    position: absolute;
+    margin-left: 85%;
+    bottom: 15%;
   }
