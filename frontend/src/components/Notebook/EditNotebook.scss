@@ -444,6 +444,8 @@ width: 20%;
   background-color: red;
 }
 .notebook-notes-cotainer{
+  display: flex;
+  justify-content: space-between;
   height: 90%;
   background-color: blue;
 }
