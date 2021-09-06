@@ -21,7 +21,6 @@ function NotebookEdit() {
     const history = useHistory();
     const { id } = useParams()
     const allNotes = notes.filter(function (note) {
-        console.log(id)
         return note.notebookId === Number(id);
     })
 
@@ -29,9 +28,15 @@ function NotebookEdit() {
         dispatch(getNotebooks());
         if (sessionUser) {
             setUser(sessionUser.id)
-            console.log(userId)
         }
         dispatch(getNotes());
+        if (notebooks.length > 0) {
+            const notebook = notebooks.find((notebook) => notebook.id = id)
+            console.log(notebook.description)
+            setDescription(notebook.description)
+            setname(notebook.name)
+        }
+
     }, [dispatch, sessionUser, userId])
 
     const onSubmit = () => {
@@ -50,44 +55,49 @@ function NotebookEdit() {
         e.preventDefault();
         history.push('/home')
     }
+    const thisNote = (e) => {
+        console.log(e.target)
+        const noteId = e.target.id
+        history.push(`/edit/note/${noteId}`)
+    }
 
     return (
         <div className='create-note-div'>
             <div className='save-note-container'>
-                <div className='pixel' onClick={onSubmit} ><p>{'Save Note =>'}</p></div>
+                <div className='pixel' onClick={onSubmit} ><p>{'Save Notebook =>'}</p></div>
             </div>
-            <div className='view-notes-container'>
-                <div className='pixel' ><p>{'<= view all notes'}</p></div>
-            </div>
+
             <div className='note-title-div' value={name}>
                 <input
-                    placeholder='Title'
+                    placeholder={name}
                     className='note-title-holder'
                     onChange={(e) => setname(e.target.value)}
                 >
+
                 </input>
             </div>
             <div class="notes" >
                 <div class="note">
                     <div className='note-container'>
                         <div className='notebook-des-container'>
-                            Description
+                            {description}
                         </div>
                         <div className='notebook-notes-cotainer'>
 
                             {
                                 allNotes.map((note) => {
                                     return (
-                                        <div key={note.id} value={note.id} id={note.id}>
-                                            <img src={paper} alt={"paper note icon"} className='note-img'>
+                                        <div onClick={(e) => thisNote(e)} key={note.id} value={note.id} className='img-border'>
+                                            <img value={note.id} src={paper} alt={"paper note icon"} id={note.id} className='note-img'>
                                             </img>
-                                            <h2 key={note.id}>{note.name}</h2>
-                                            <div className='notes-actions-btn' value={note.id}>
+                                            <h2 value={note.id} className='img-text' key={note.id}>{note.name}</h2>
+                                            <div value={note.id} className='notes-actions-btn'>
                                             </div>
                                         </div>
                                     )
                                 })
                             }
+
                         </div>
                     </div>
                 </div>
