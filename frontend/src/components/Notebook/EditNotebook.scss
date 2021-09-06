@@ -390,8 +390,9 @@
 }
 
 .note-title-div {
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #a8a3a0;
 }
 .note-title-holder {
@@ -430,8 +431,12 @@ outline: none;
     
 }
 .note-img{
-height: 20%;
-width: 20%;
+height: 70%;
+width: 70%;
+margin-top: 10%;
+}
+.note-img:hover{
+cursor: pointer;
 }
 
 .piece-of-note{
@@ -439,13 +444,27 @@ width: 20%;
 }
 .notebook-des-container{
   height: 10%;
+  font-family: Verdana, Arial, Sans-Serif;
+
   display: flex;
   justify-content: center;
-  background-color: red;
 }
 .notebook-notes-cotainer{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 90%;
-  background-color: blue;
+  width:100%;
+
 }
+
+.img-border{
+  display: flex;
+  align-items: center;
+  height: 20%;
+  width: 20%;
+  flex-direction: column;
+};
+
+.img-text{
+font-size: 16px;
+};

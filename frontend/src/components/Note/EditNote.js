@@ -37,11 +37,17 @@ function EditNote() {
 
     }, [dispatch, sessionUser])
 
-    const backToNotes = (e) => {
+    const backToNotebook = (e) => {
         e.preventDefault();
         const notebookId = note.notebookId
-        history.push(`/all/notes/${notebookId}`)
+        history.push(`/edit/notebook/${notebookId}`)
     };
+
+    const onClick = (e) => {
+        e.preventDefault();
+        const noteId = e.target.id
+        history.push(`/edit/note/${noteId}`)
+    }
 
     const updateNote = (e) => {
         e.preventDefault();
@@ -56,7 +62,7 @@ function EditNote() {
                 <div className='pixel' onClick={updateNote} ><p>{'Update Note =>'}</p></div>
             </div>
             <div className='view-notes-container'>
-                <div className='pixel' onClick={backToNotes}><p>{'<= Back to notes'}</p></div>
+                <div className='pixel' onClick={backToNotebook}><p>{'<= Back to notebook'}</p></div>
             </div>
             <div className='note-title-div' value={name}>
                 <input
