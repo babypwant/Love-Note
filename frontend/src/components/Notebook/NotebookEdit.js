@@ -37,7 +37,7 @@ function NotebookEdit() {
             setname(notebook.name)
         }
 
-    }, [dispatch, sessionUser, userId])
+    }, [dispatch, sessionUser, userId, id])
 
     const onSubmit = () => {
         const notebook = notebooks.find((notebook) => notebook.id = id)
@@ -46,15 +46,8 @@ function NotebookEdit() {
         history.push('/home')
         return dispatch(sessionActions.notebookEdit({ id, name, description }))
     }
-    const newNote = (e) => {
-        e.preventDefault();
-        history.push(`/notes/${id}`)
-    }
 
-    const library = (e) => {
-        e.preventDefault();
-        history.push('/home')
-    }
+
     const thisNote = (e) => {
         console.log(e.target)
         const noteId = e.target.id
@@ -66,14 +59,15 @@ function NotebookEdit() {
             <div className='save-note-container'>
                 <div className='pixel' onClick={onSubmit} ><p>{'Save Notebook =>'}</p></div>
             </div>
-
+            <div className='view-notes-container'>
+                <div className='pixel' ><p>{'<= view all notes'}</p></div>
+            </div>
             <div className='note-title-div' value={name}>
                 <input
                     placeholder={name}
                     className='note-title-holder'
                     onChange={(e) => setname(e.target.value)}
                 >
-
                 </input>
             </div>
             <div class="notes" >

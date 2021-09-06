@@ -60,8 +60,6 @@ function AllNotes() {
                 return data
             });
     }
-    console.log(allNotes)
-
     return (
         <div className='all-notes-page'>
             <div className='moon-container'>

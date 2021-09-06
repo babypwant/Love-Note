@@ -12,7 +12,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import FrontPage from "./components/Homepage";
 import EditNote from "./components/Note/EditNote";
-
+import Library from "./components/All/Library";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,7 +63,9 @@ function App() {
       <Route path='/all/notes/:id'>
         <AllNotes />
       </Route>
-
+      <Route path='/library/:id'>
+        <Library />
+      </Route>
       <Route path='/home' exact>
         <Home />
       </Route>
