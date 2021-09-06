@@ -6,6 +6,7 @@ import './Navigation.css';
 
 function Navigation() {
     const sessionUser = useSelector(state => state.session.user);
+    const userId = sessionUser?.id
     return (
         <div >
             <nav>
@@ -14,7 +15,7 @@ function Navigation() {
                         <NavLink exact to="/home" className='home' >Home</NavLink>
                     </div>
                     <div>
-                        <NavLink to='/home' className='signup'>Library</NavLink>
+                        <NavLink to={`/library/${userId}`} className='signup'>Library</NavLink>
                     </div>
                 </div>
                 <div className='navbar-right'>
@@ -25,7 +26,6 @@ function Navigation() {
             </nav>
         </div>
     )
-
 };
 
 export default Navigation;

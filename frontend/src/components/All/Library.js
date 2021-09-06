@@ -1,0 +1,81 @@
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getNotebooks } from '../../store/notebooks'
+import { useHistory } from 'react-router-dom'
+import { getNotes } from '../../store/notes';
+import paper from '../../images/paper.png'
+import '../Homepage/home.scss'
+
+function Library() {
+    const notebooks = useSelector(state => Object.values(state.notebooks))
+    const notes = useSelector(state => Object.values(state.notes))
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const sessionUser = useSelector(state => state.session.user);
+    const sessionId = useSelector(state => state.session.user?.id);
+    const [userId, setUser] = useState(0)
+    const allNotes = notes.filter(function (note) {
+        console.log(sessionId)
+        return note.notebookId === Number(sessionId);
+    })
+
+
+
+    useEffect(() => {
+        dispatch(getNotebooks());
+        dispatch(getNotes());
+
+        if (sessionUser) {
+            setUser(sessionUser.id)
+        }
+
+    }, [dispatch, sessionUser, userId])
+
+    const editNotebook = (e) => {
+        const id = e
+        history.push(`/edit/notebook/${id}`)
+    }
+
+    const newNotebook = () => {
+        history.push('/notebooks');
+    };
+    return (
+        <div className='logged-in'>
+
+            <div className='rows'>
+                {notebooks.map((notebook) => {
+                    return (
+                        <div class="container product-container" value={notebook.id}>
+                            <div onClick={() => editNotebook(notebook.id)} class="product-box" value={notebook.id}>
+                                <div id="box-header" value={notebook.id}>
+                                </div>
+                                <div id="box-body" value={notebook.id}>
+                                    <p class="text-center" value={notebook.id}>{notebook.name} </p>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })}
+                <div className='paper-container'>
+                    {
+                        notes.map((note) => {
+                            return <div clasname='piece-of-paper' key={note.id} value={note.id} id={note.id}>
+                                <h2 key={note.id}>{note.name}</h2>
+                                <img src={paper} alt={"paper note icon"} className='paper-img'></img>
+                            </div>
+                        })
+                    }
+                </div>
+            </div>
+            <div className='new-notenook-btn'>
+                <div class='btn-container' >
+                    <div class="pixel" onClick={newNotebook} ><p>New Notebook</p></div>
+                </div>
+            </div>
+        </div>
+
+    );
+}
+
+export default Library;

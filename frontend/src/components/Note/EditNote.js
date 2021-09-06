@@ -43,12 +43,6 @@ function EditNote() {
         history.push(`/edit/notebook/${notebookId}`)
     };
 
-    const onClick = (e) => {
-        e.preventDefault();
-        const noteId = e.target.id
-        history.push(`/edit/note/${noteId}`)
-    }
-
     const updateNote = (e) => {
         e.preventDefault();
         const notebookId = note.notebookId
