@@ -60,10 +60,12 @@ function Library() {
                 {
                     notes.map((note) => {
                         return (
-                            <div>
+                            <div className='note-paper-container'>
                                 <div clasname='notes-paper' key={note.id} value={note.id} id={note.id}>
-                                    <h2 key={note.id}>{note.name}</h2>
-                                    <img src={paper} alt={"paper note icon"} className='notes-img'></img>
+                                    <div>
+                                        <h2 className='note-header' key={note.id}>{note.name}</h2>
+                                        <img src={paper} alt={"paper note icon"} className='notes-img'></img>
+                                    </div>
                                 </div>
                             </div>
                         )

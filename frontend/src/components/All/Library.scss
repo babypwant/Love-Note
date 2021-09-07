@@ -27,7 +27,7 @@
     height: 150px;
     width: 115px;
     margin: 10% auto;
-    border-radius: 0px 100px 0px 0px;
+    border-radius: 0px 50px 0px 0px;
     overflow: hidden;
     background-color: #fff0ca;
     transition: 0.5s;
@@ -50,7 +50,7 @@
   #boxs-header {
     background-color: #ffcf5a;
     height: 50px;
-    border-radius: 0px 0px 50% 20%;
+    border-radius: 0px 0px 50% 50%;
     transition: 0.5s;
   }
   #boxs-header h3 {
@@ -80,6 +80,7 @@
   }
 
   .paper-img {
+      margin-top: 20px;
       height: 50%;
       width: 25%;
   }
@@ -95,3 +96,12 @@
   .notes-img:hover{
       cursor: pointer;
   }
+  .note-header{
+    position: absolute;
+    margin-top:20px;
+    margin-left: 8px;
+    font-size: 14px
+  };
+  .note-paper-container{
+    margin-top: 95px
+  };
