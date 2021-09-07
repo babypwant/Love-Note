@@ -5,7 +5,7 @@ import { getNotebooks } from '../../store/notebooks'
 import { useHistory } from 'react-router-dom'
 import { getNotes } from '../../store/notes';
 import paper from '../../images/paper.png'
-import '../Homepage/home.scss'
+import './Library.scss'
 
 function Library() {
     const notebooks = useSelector(state => Object.values(state.notebooks))
@@ -47,26 +47,30 @@ function Library() {
                 {notebooks.map((notebook) => {
                     return (
                         <div class="container product-container" value={notebook.id}>
-                            <div onClick={() => editNotebook(notebook.id)} class="product-box" value={notebook.id}>
-                                <div id="box-header" value={notebook.id}>
+                            <div onClick={() => editNotebook(notebook.id)} class="products-box" value={notebook.id}>
+                                <div id="boxs-header" value={notebook.id}>
                                 </div>
-                                <div id="box-body" value={notebook.id}>
-                                    <p class="text-center" value={notebook.id}>{notebook.name} </p>
+                                <div id="boxs-body" value={notebook.id}>
+                                    <p class="texts-center" value={notebook.id}>{notebook.name} </p>
                                 </div>
                             </div>
                         </div>
                     )
                 })}
-                <div className='paper-container'>
-                    {
-                        notes.map((note) => {
-                            return <div clasname='piece-of-paper' key={note.id} value={note.id} id={note.id}>
-                                <h2 key={note.id}>{note.name}</h2>
-                                <img src={paper} alt={"paper note icon"} className='paper-img'></img>
+                {
+                    notes.map((note) => {
+                        return (
+                            <div className='note-paper-container'>
+                                <div clasname='notes-paper' key={note.id} value={note.id} id={note.id}>
+                                    <div>
+                                        <h2 className='note-header' key={note.id}>{note.name}</h2>
+                                        <img src={paper} alt={"paper note icon"} className='notes-img'></img>
+                                    </div>
+                                </div>
                             </div>
-                        })
-                    }
-                </div>
+                        )
+                    })
+                }
             </div>
             <div className='new-notenook-btn'>
                 <div class='btn-container' >
