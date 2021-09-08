@@ -19,9 +19,7 @@ function Navigation() {
                     </div>
                 </div>
                 <div className='navbar-right'>
-                    <div className='thirdbox'>
-                        <ProfileButton user={sessionUser} />
-                    </div>
+                    <ProfileButton user={sessionUser} />
                 </div>
             </nav>
         </div>

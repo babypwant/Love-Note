@@ -17,28 +17,10 @@ function Home() {
     useEffect(() => {
         dispatch(getNotebooks());
         if (sessionUser) {
-            console.log(userId)
             setUser(sessionUser.id)
         }
 
     }, [dispatch, sessionUser, userId])
-
-    // const onSubmit = (e) => {
-    //     e.preventDefault();
-    //     const value = e.target.value
-    //     const notebook = notebooks.find((notebook) => notebook.id = value)
-    //     console.log(notebook)
-    //     if (mode === false) {
-    //         setMode(true)
-    //     } else {
-    //         setMode(false)
-    //     }
-    //     return dispatch(sessionActions.notebookDelete(notebook))
-    //         .catch(async (res) => {
-    //             const data = await res.json();
-    //             console.log(data)
-    //         });
-    // }
 
     const editNotebook = (e) => {
         const id = e

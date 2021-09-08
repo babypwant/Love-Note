@@ -22,7 +22,7 @@ const notebookValidators = [
 
 router.get('/', asyncHandler(async (req, res,) => {
     const notebooks = await Notebook.findAll();
-    res.json(notebooks);
+    return res.json(notebooks);
 }));
 
 

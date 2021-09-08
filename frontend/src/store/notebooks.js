@@ -82,13 +82,13 @@ export const logoutNotebook = () => async (dispatch) => {
     return response;
 }
 
-const initalState = { };
+const initalState = {};
 
 const notebooksReducer = (state = initalState, action) => {
     let newState;
     switch (action.type) {
         case SET_NOTEBOOKS:
-            const allNotebooks = { };
+            const allNotebooks = {};
             action.notebooks.forEach((notebook) => {
                 allNotebooks[notebook.id] = notebook;
             });
@@ -97,11 +97,11 @@ const notebooksReducer = (state = initalState, action) => {
                 ...allNotebooks
             };
         case SET_NOTEBOOK:
-            newState = Object.assign({ }, state);
+            newState = Object.assign({}, state);
             newState[action.payload.id] = action.payload
             return newState;
         case REMOVE_NOTEBOOK:
-            newState = Object.assign({ }, state);
+            newState = Object.assign({}, state);
             delete newState[action.notebook.id]
             return newState
         default:

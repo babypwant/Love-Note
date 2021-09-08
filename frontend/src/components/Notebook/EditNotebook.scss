@@ -124,6 +124,9 @@
           radial-gradient(circle at 100% 100%, rgba(204,0,0,0) 14px, #000000 15px),
           radial-gradient(circle at 0 100%, rgba(204,0,0,0) 14px, #000000 15px);
   }
+  .pixel p:hover{
+    color: rgb(236, 213, 148);
+  }
   
   .pixel2 {
     position: relative;

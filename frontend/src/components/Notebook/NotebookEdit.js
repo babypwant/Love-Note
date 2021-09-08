@@ -20,6 +20,7 @@ function NotebookEdit() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams()
+    const numId = parseInt(id)
     const allNotes = notes.filter(function (note) {
         return note.notebookId === Number(id);
     })
@@ -30,13 +31,11 @@ function NotebookEdit() {
             setUser(sessionUser.id)
         }
         dispatch(getNotes());
-        if (notebooks.length > 0) {
-            const notebook = notebooks.find((notebook) => notebook.id = id)
-            console.log(notebook.description)
-            setDescription(notebook.description)
-            setname(notebook.name)
-        }
 
+        const notebook = notebooks.find(notebook => notebook.id === numId)
+
+        setDescription(notebook?.description)
+        setname(notebook?.name)
     }, [dispatch, sessionUser, userId, id])
 
     const onSubmit = () => {
@@ -71,6 +70,7 @@ function NotebookEdit() {
                 </input>
             </div>
             <div class="notes" >
+                <input type='hidden' value={id} />
                 <div class="note">
                     <div className='note-container'>
                         <div className='notebook-des-container'>
