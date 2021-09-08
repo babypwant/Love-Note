@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { useHistory } from "react-router";
 
-function ProfileButton({ user }) {
+function ProfileButton() {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
     const history = useHistory();
@@ -32,11 +32,9 @@ function ProfileButton({ user }) {
     };
 
     return (
-        <>
-            <button onClick={logout}>
-                <i className="fas fa-sign-out-alt" />
-            </button>
-        </>
+        <div className='login' onClick={logout}>
+            Logout
+        </div>
     );
 }
 
