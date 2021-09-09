@@ -50,7 +50,7 @@ function Home() {
             </div>
             <div className='new-notenook-btn'>
                 <div class='btn-container' >
-                    <div class="pixel" onClick={newNotebook} ><p>New Notebook</p></div>
+                    <div class="mixel" onClick={newNotebook} ><p>New Notebook</p></div>
                 </div>
             </div>
         </div>

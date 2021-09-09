@@ -46,7 +46,7 @@ function EditNote() {
     const updateNote = (e) => {
         e.preventDefault();
         const notebookId = note.notebookId
-        history.push(`/all/notes/${notebookId}`)
+        history.push(`/edit/notebook/${notebookId}`)
         return dispatch(sessionActions.noteEdit({ id, name, description }))
     }
 

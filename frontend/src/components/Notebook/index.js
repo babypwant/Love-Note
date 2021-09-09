@@ -5,9 +5,6 @@ import './Notebook.scss';
 import * as sessionActions from "../../store/notebooks";
 import { getNotebooks } from '../../store/notebooks'
 import { useHistory } from 'react-router-dom'
-import campfire from '../../images/campsite.jpg'
-import totoro from '../../images/totoro.gif'
-import book from '../../images/book1.png'
 
 //Main bug to fix for tommorrow:
 
@@ -48,60 +45,55 @@ function Notebook() {
 
     if (notebooks) {
         notebookList = (
-            <form onSubmit={handleSubmit} className='notebook-form'>
+            <div>
+
                 <div className='Errors'>
                     <ul>
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                 </div>
-                <h2>Book Name</h2>
-                <div className='name-and-desc'>
-                    <input
-                        type="text"
-                        className='notebook-input'
-                        placeholder='Awesome name'
-                        value={name}
-                        onChange={(e) => setname(e.target.value)}
-                        required
-                    />
+                <div class="container product-container" value={""}>
+                    <div class={"product-box"}>
+                        <div id="box-header" value={""}>
+
+                        </div>
+                        <div id="box-body" value={""}>
+                            <p class="name-inp-div" value={""}> <input
+                                className='name-change'
+                                type="text"
+                                placeholder='Book Name'
+                                value={name}
+                                onChange={(e) => setname(e.target.value)}
+                                required
+                            /> </p>
+                        </div>
+                    </div>
                 </div>
                 <div className='name-and-desc'>
                     <input
                         type="text"
-                        className='notebook-input'
-                        placeholder='cool cescription'
+                        className='desc-inp-div'
+                        placeholder='Add a description to your book'
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         required
                     />
                 </div>
-                <div className='btn-div'>
-                    <button className='create-a-book-btn'>| Create |</button>
-                </div>
 
-            </form>
+
+            </div >
+
         );
     } else {
         return true
     }
 
-
-
     return (
         <div className='create-notebook-container'>
-            <div className='totoro-container'>
-                <img alt={"Totoro character"} src={totoro}></img>
-            </div>
-            <div className='brown-square-container'>
-                <img alt={"piece of paper"} src={book} className='brown-sqr'></img>
-            </div>
-            <div className='totoro-speak-container'>
-                <h2>" Tell us a story please!" </h2>
-            </div>
             <div className='creation-form-container'>
                 {notebookList}
-                <div className='campfire-img-div'>
-                    <img alt={"Campfire"} src={campfire}></img>
+                <div className='mixel' onClick={handleSubmit}>
+                    <p>Create </p>
                 </div>
             </div>
         </div>
