@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getNotebooks } from '../../store/notebooks'
+import { getNotebooks, notebookDelete } from '../../store/notebooks'
 import { useHistory } from 'react-router-dom'
 import './home.scss'
 
@@ -30,6 +30,8 @@ function Home() {
     const newNotebook = () => {
         history.push('/notebooks');
     };
+
+
     return (
         <div className='logged-in'>
 
@@ -50,7 +52,7 @@ function Home() {
             </div>
             <div className='new-notenook-btn'>
                 <div class='btn-container' >
-                    <div class="mixel" onClick={newNotebook} ><p>New Notebook</p></div>
+                    <div class="pixel" onClick={newNotebook} ><p>New Notebook</p></div>
                 </div>
             </div>
         </div>

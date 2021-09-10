@@ -46,6 +46,8 @@ export const notebookCreate = (notebook) => async (dispatch) => {
 
 export const notebookDelete = (notebook) => async (dispatch) => {
     const { id, description, userId } = notebook;
+    console.log(id, description, userId)
+    console.log(id, description, userId)
     const response = await csrfFetch(`/api/notebooks/${id}`, {
         method: "DELETE",
         body: JSON.stringify({

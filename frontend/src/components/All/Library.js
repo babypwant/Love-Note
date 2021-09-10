@@ -40,6 +40,11 @@ function Library() {
     const newNotebook = () => {
         history.push('/notebooks');
     };
+
+    const editNote = (id) => {
+        console.log(id)
+        history.push(`/edit/note/${id}`)
+    };
     return (
         <div className='logged-in'>
 
@@ -61,7 +66,7 @@ function Library() {
                     notes.map((note) => {
                         return (
                             <div className='note-paper-container'>
-                                <div clasname='notes-paper' key={note.id} value={note.id} id={note.id}>
+                                <div clasname='notes-paper' onClick={() => editNote(note.id)} key={note.id} value={note.id} id={note.id}>
                                     <div>
                                         <h2 className='note-header' key={note.id}>{note.name}</h2>
                                         <img src={paper} alt={"paper note icon"} className='notes-img'></img>
