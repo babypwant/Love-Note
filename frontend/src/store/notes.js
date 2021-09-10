@@ -82,13 +82,13 @@ export const logoutNote = () => async (dispatch) => {
     return response;
 }
 
-const initalState = { };
+const initalState = {};
 
 const notesReducer = (state = initalState, action) => {
     let newState;
     switch (action.type) {
         case SET_NOTES:
-            const allNotes = { };
+            const allNotes = {};
             action.notes.forEach((note) => {
                 allNotes[note.id] = note;
             });
@@ -97,11 +97,11 @@ const notesReducer = (state = initalState, action) => {
                 ...allNotes
             };
         case SET_NOTE:
-            newState = Object.assign({ }, state);
+            newState = Object.assign({}, state);
             newState[action.payload.id] = action.payload
             return newState;
         case REMOVE_NOTE:
-            newState = Object.assign({ }, state);
+            newState = Object.assign({}, state);
             delete newState[action.note.id]
             return newState
         default:

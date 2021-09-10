@@ -5,7 +5,7 @@ Come back to css
 .create-notebook-container{
     position: relative;
     display: flex;
-    background-color: #0f1024;
+    background-color: #a26e48;
     height: 100%;
     width: 2000px;
     align-items: normal;
@@ -30,9 +30,12 @@ Come back to css
 }
 
 .creation-form-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     text-align: center;
-     margin-left: 720;
-     margin-top:170;
+    margin-left: 720;
+    margin-top:170;
 }
 
 .notebook-input:focus, textarea:focus, select:focus{    
@@ -74,10 +77,7 @@ TOTORO CONTAINER
     top:600;
     right:100;
 }
-.creation-form-container{
-    position: absolute;
-    left: 20;
-}
+
 .brown-square-container{
     position: absolute;
     top:60;
@@ -95,3 +95,67 @@ TOTORO CONTAINER
     font-family: Helvetica, Arial, Sans-Serif;
     background-color: grey;
 }
+
+.mixel {
+    left: 80px;
+    margin-top: 10px;
+    line-height: 0;
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges; /* Firefox */
+    image-rendering: -o-crisp-edges; /* Opera */
+    image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+    border-style: solid;
+    border-width: 20px;
+    -moz-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+    -webkit-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+    -o-border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+    border-image: url(https://i.imgur.com/sREM8Yn.png) 20 stretch;
+  }
+  
+  .mixel p {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    width: auto;
+    text-align: center;
+    margin: -20px -20px;
+    line-height: 20px;
+    padding: 10px 20px;
+    color: rgb(255, 255, 255);
+    
+      background: #000000;
+      background:
+          linear-gradient(135deg, transparent 10px, #000000 0) top left,
+          linear-gradient(225deg, transparent 10px, #000000 0) top right,
+          linear-gradient(315deg, transparent 10px, #000000 0) bottom right,
+          linear-gradient(45deg,  transparent 10px, #000000 0) bottom left;
+      background-size: 50% 50%;
+      background-repeat: no-repeat;
+      background-image:
+          radial-gradient(circle at 0 0, rgba(204,0,0,0) 14px, #000000 15px),
+          radial-gradient(circle at 100% 0, rgba(204,0,0,0) 14px, #000000 15px),
+          radial-gradient(circle at 100% 100%, rgba(204,0,0,0) 14px, #000000 15px),
+          radial-gradient(circle at 0 100%, rgba(204,0,0,0) 14px, #000000 15px);
+  }
+  .mixel p:hover{
+    color: rgb(236, 213, 148);
+    cursor: pointer;
+  }
+  
+  .desc-inp-div{
+      height: 100px;
+      width: 200px;
+      margin-right: 130px;
+      overflow-y: scroll;
+      border-radius: 16px;
+  }
+  .desc-inp-div:focus{
+    border-radius: 16px;
+  }
+  .name-change{
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 6px;
+  }

@@ -9,15 +9,6 @@ import { getNotebooks } from '../../store/notebooks';
 import { useHistory, useParams } from 'react-router';
 import paper from '../../images/paper.png'
 
-//remember to make a hidden field with userId set from state
-//so we can assoc. userId into our table
-
-//Main bug to fix for tommorrow:
-/*
-when I refresh my sessions user information returns null, why?
-works only on the first instance of loading the page
-*/
-
 function AllNotes() {
     const sessionUser = useSelector(state => state.session.user);
     const notes = useSelector(state => Object.values(state.notes))
@@ -34,15 +25,6 @@ function AllNotes() {
         dispatch(getUsers())
         dispatch(getNotebooks())
     }, [dispatch, sessionUser])
-
-
-    // const onSubmit = (e) => {
-    //     e.preventDefault();
-    //     const noteId = e.target.value
-    //     console.log(noteId)
-
-    // };
-
 
     const onClick = (e) => {
         e.preventDefault();

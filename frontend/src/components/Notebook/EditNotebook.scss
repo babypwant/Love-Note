@@ -471,3 +471,20 @@ cursor: pointer;
 .img-text{
 font-size: 16px;
 };
+
+.del-notes-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+    margin: 50px;
+    display: block;
+    width: 400px;
+    text-align: center;
+    top:800;
+    right: 1400;
+    
+}
+.del-notes-container:hover{
+  color:red;
+}
+

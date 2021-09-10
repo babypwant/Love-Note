@@ -38,7 +38,7 @@ function Note() {
         var contenteditable = document.querySelector('[contenteditable]'),
             description = contenteditable.textContent;
         if (name.length > 0 && description.length > 0) {
-            history.push(`/all/notes/${notebookId}`)
+            history.push(`/edit/notebook/${notebookId}`)
             return dispatch(sessionActions.noteCreate({ name, notebookId, description }))
                 .catch(async (res) => {
                     const data = await res.json();
@@ -58,8 +58,8 @@ function Note() {
         const arrayNums = params.slice((7))
         const stringNums = arrayNums.join('')
         const notebookId = parseInt(stringNums)
-        history.push(`/all/notes/${notebookId}`)
-    }
+        history.push(`/edit/notebook/${notebookId}`)
+    };
 
     return (
         <div className='create-note-div'>

@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router';
 import { getNotes } from '../../store/notes';
 import paper from '../../images/paper.png'
+import { notebookDelete } from '../../store/notebooks';
 
 
 function NotebookEdit() {
@@ -53,13 +54,26 @@ function NotebookEdit() {
         history.push(`/edit/note/${noteId}`)
     }
 
+    const newNote = () => {
+        history.push(`/notes/${id}`)
+    };
+
+    const deleteNotebook = () => {
+        const id = numId
+        dispatch(notebookDelete({ id, description, userId }))
+        history.push('/home')
+    };
+
     return (
         <div className='create-note-div'>
+            <div className='view-notes-container'>
+                <div className='pixel' onClick={newNote} ><p>{'New Note =>'}</p></div>
+            </div>
             <div className='save-note-container'>
                 <div className='pixel' onClick={onSubmit} ><p>{'Save Notebook =>'}</p></div>
             </div>
-            <div className='view-notes-container'>
-                <div className='pixel' ><p>{'<= view all notes'}</p></div>
+            <div className='del-notes-container'>
+                <div className='pixel' onClick={deleteNotebook} ><p>{'Delete book'}</p></div>
             </div>
             <div className='note-title-div' value={name}>
                 <input

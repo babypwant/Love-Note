@@ -7,6 +7,7 @@ import { getNotes } from '../../store/notes'
 import { getUsers } from '../../store/users'
 import { getNotebooks } from '../../store/notebooks';
 import { useHistory, useParams } from 'react-router';
+import { noteDelete } from '../../store/notes';
 
 //remember to make a hidden field with userId set from state
 //so we can assoc. userId into our table
@@ -46,9 +47,17 @@ function EditNote() {
     const updateNote = (e) => {
         e.preventDefault();
         const notebookId = note.notebookId
-        history.push(`/all/notes/${notebookId}`)
+        history.push(`/edit/notebook/${notebookId}`)
         return dispatch(sessionActions.noteEdit({ id, name, description }))
     }
+
+    const deleteNote = () => {
+        const id = noteId;
+        const notebookId = note.notebookId
+
+        dispatch(noteDelete({ id, notebookId, description }))
+        history.push('/home')
+    };
 
     return (
         <div className='create-note-div'>
@@ -58,9 +67,12 @@ function EditNote() {
             <div className='view-notes-container'>
                 <div className='pixel' onClick={backToNotebook}><p>{'<= Back to notebook'}</p></div>
             </div>
+            <div className='del-notes-container'>
+                <div className='pixel' onClick={deleteNote} ><p>{'Delete note'}</p></div>
+            </div>
             <div className='note-title-div' value={name}>
                 <input
-                    placeholder={note.name}
+                    placeholder={note?.name}
                     className='note-title-holder'
 
                     onChange={(e) => setName(e.target.value)}
@@ -77,7 +89,7 @@ function EditNote() {
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                             >
-                                {`${note.description}`}
+                                {`${note?.description}`}
                             </textarea>
                         </div>
                     </div>
