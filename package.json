@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/babypwant/authenticate-me#readme",
   "dependencies": {
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "sass": "^1.59.3"
   }
 }
