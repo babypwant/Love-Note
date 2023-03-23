@@ -19,6 +19,7 @@ function Library() {
         console.log(sessionId)
         return note.notebookId === Number(sessionId);
     })
+    console.log(allNotes)
 
 
 

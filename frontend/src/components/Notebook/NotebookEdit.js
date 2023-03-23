@@ -37,7 +37,7 @@ function NotebookEdit() {
 
         setDescription(notebook?.description)
         setname(notebook?.name)
-    }, [dispatch, sessionUser, userId, id])
+    }, [dispatch, sessionUser, userId, id,notebooks,numId])
 
     const onSubmit = () => {
         const notebook = notebooks.find((notebook) => notebook.id = id)

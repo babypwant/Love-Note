@@ -11,6 +11,8 @@ function Home() {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const [userId, setUser] = useState(0)
+    const useNotebooks = notebookDelete
+    console.log(typeof(useNotebooks))
 
 
 
