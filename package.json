@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "heroku-postbuild": "npm run build --prefix frontend",
     "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
     "dev:backend": "npm install --prefix backend start",
@@ -26,5 +27,8 @@
   "dependencies": {
     "jsonwebtoken": "^8.5.1",
     "sass": "^1.59.3"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
   }
 }
