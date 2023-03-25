@@ -215,6 +215,7 @@ $pink-shadow: #ffe3e2;
   // Common button styles
   position: horizontal;
   display: inline-block;
+  flex-wrap: wrap;
   cursor: pointer;
   outline: none;
   border: 8;
