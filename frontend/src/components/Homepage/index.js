@@ -24,10 +24,16 @@ function FrontPage() {
         history.push('/home')
         return dispatch(sessionActions.login({ credential, password }))
             .catch(async (res) => {
-                const data = await res.json();
-                return data;
+                const contentType = res.headers.get('Content-Type');
+                if (contentType && contentType.includes('application/json')) {
+                    const data = await res.json();
+                    return data;
+                } else {
+                    throw new Error('Invalid JSON response');
+                }
             });
     }
+    
 
     const login = (e) => {
         e.preventDefault();
@@ -49,7 +55,7 @@ function FrontPage() {
                         <li className="content__container__list__item">Anywhere</li>
                         <li className="content__container__list__item">In Space</li>
                         <li className="content__container__list__item">On a date</li>
-                        <li className="content__container__list__item">Alone</li>
+                        <li className="content__container__list__item"></li>
                     </ul>
                 </div>
             </div>

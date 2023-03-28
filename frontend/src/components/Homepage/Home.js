@@ -12,7 +12,8 @@ function Home() {
     const sessionUser = useSelector(state => state.session.user);
     const [userId, setUser] = useState(0)
     const useNotebooks = notebookDelete
-    console.log(typeof(useNotebooks))
+    const notebook_type = typeof(useNotebooks)
+    console.log(notebook_type)
 
 
 
@@ -40,12 +41,12 @@ function Home() {
             <div className='rows'>
                 {notebooks.map((notebook) => {
                     return (
-                        <div class="container product-container" value={notebook.id}>
-                            <div onClick={() => editNotebook(notebook.id)} class="product-box" value={notebook.id}>
+                        <div key={notebook.id} className="container product-container" value={notebook.id}>
+                            <div onClick={() => editNotebook(notebook.id)} className="product-box" value={notebook.id}>
                                 <div id="box-header" value={notebook.id}>
                                 </div>
                                 <div id="box-body" value={notebook.id}>
-                                    <p class="text-center" value={notebook.id}>{notebook.name} </p>
+                                    <p className="text-center" value={notebook.id}>{notebook.name} </p>
                                 </div>
                             </div>
                         </div>
@@ -53,8 +54,8 @@ function Home() {
                 })}
             </div>
             <div className='new-notenook-btn'>
-                <div class='btn-container' >
-                    <div class="pixel" onClick={newNotebook} ><p>New Notebook</p></div>
+                <div className='btn-container' >
+                    <div className="pixel" onClick={newNotebook} ><p>New Notebook</p></div>
                 </div>
             </div>
         </div>

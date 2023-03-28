@@ -31,6 +31,7 @@ router.get(
     '/restore-user',
     restoreUser,
     (req, res) => {
+        print(req.user)
         return res.json(req.user);
     }
 );
