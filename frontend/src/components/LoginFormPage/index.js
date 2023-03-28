@@ -49,7 +49,7 @@ function LoginFormPage() {
                     >
                     </input>
                 </div>
-                <button class="btn btn--stripe">Login</button>
+                <button className="btn btn--stripe">Login</button>
             </form>
         </div >
     );
