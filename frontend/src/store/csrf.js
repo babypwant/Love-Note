@@ -13,7 +13,10 @@ export async function csrfFetch(url, options = {}) {
     options.headers['Content-Type'] =
       options.headers['Content-Type'] || 'application/json';
     options.headers['XSRF-TOKEN'] = Cookies.get('XSRF-TOKEN');
+    
   }
+
+  console.log("document cookie",document.cookie);
 
   // call the default window's fetch with the url and the options passed in
   const res = await window.fetch(`http://localhost:8080${url}`, options);
@@ -29,7 +32,8 @@ export async function csrfFetch(url, options = {}) {
 
 export function restoreCSRF() {
   return csrfFetch('/api/csrf/restore').then(res => {
-    const csrfToken = res.headers.get('X-CSRF-Token');
+    const csrfToken = Cookies.get('_csrf');
+    console.log('CSRF Token from initial:', csrfToken)
     Cookies.set('XSRF-TOKEN', csrfToken);
   });
 }

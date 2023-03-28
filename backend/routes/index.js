@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const apiRouter = require('./api');
+const csrf = require('csurf');
 
 router.use('/api', apiRouter);
 
@@ -26,10 +27,16 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
+// CSRF middleware
+const csrfProtection = csrf({ cookie: true });
+
 // Add a XSRF-TOKEN cookie in development
 if (process.env.NODE_ENV !== 'production') {
-    router.get('/api/csrf/restore', (req, res) => {
-        res.cookie('XSRF-TOKEN', req.csrfToken(), { httpOnly: false, secure: false });
+    router.get('/api/csrf/restore', csrfProtection, (req, res) => {
+        const token = req.csrfToken();
+        console.log('Landing page token', token);
+        console.log('New command', req.cookies)
+        res.cookie('XSRF-TOKEN', token, { httpOnly: false, secure: false });
         res.status(201).json({});
     });
 }
