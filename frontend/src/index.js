@@ -10,8 +10,6 @@ import * as sessionActions from './store/session';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as userActions from './store/users'
 import * as notebookActions from './store/notebooks'
-
-
 import configureStore from './store';
 
 const store = configureStore();
