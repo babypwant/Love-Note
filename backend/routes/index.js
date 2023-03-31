@@ -30,13 +30,12 @@ if (process.env.NODE_ENV === 'production') {
 // CSRF middleware
 const csrfProtection = csrf({ cookie: true });
 
-// Add a XSRF-TOKEN cookie in development
+// Add a _csrf cookie in development
 if (process.env.NODE_ENV !== 'production') {
     router.get('/api/csrf/restore', csrfProtection, (req, res) => {
         const token = req.csrfToken();
+        res.cookie('_csrf', token, { httpOnly: false, secure: false });
         console.log('Landing page token', token);
-        console.log('New command', req.cookies)
-        res.cookie('XSRF-TOKEN', token, { httpOnly: false, secure: false });
         res.status(201).json({});
     });
 }

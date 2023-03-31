@@ -7,16 +7,22 @@ export async function csrfFetch(url, options = {}) {
   options.headers = options.headers || {};
 
   // if the options.method is not 'GET', then set the "Content-Type" header to
-  // "application/json", and set the "XSRF-TOKEN" header to the value of the 
-  // "XSRF-TOKEN" cookie
+  // "application/json", and set the "_csrf" header to the value of the 
+  // "_csrf" cookie
   if (options.method.toUpperCase() !== 'GET') {
     options.headers['Content-Type'] =
       options.headers['Content-Type'] || 'application/json';
-    options.headers['XSRF-TOKEN'] = Cookies.get('XSRF-TOKEN');
+    // options.headers['_csrf'] = 'K1jXYgoJ-au5gjLh5MxGFZD-FT57Rr4nmkwY'
+    options.headers['_csrf'] = Cookies.get('_csrf')
     
+    // TfcBIvFcOYAVyGH0QkSqj2CI  
+
   }
 
-  console.log("document cookie",document.cookie);
+  const csrfToken = Cookies.get('_csrf');
+
+  console.log('csrfToken', csrfToken)
+  console.log(options.headers['_csrf'])
 
   // call the default window's fetch with the url and the options passed in
   const res = await window.fetch(`http://localhost:8080${url}`, options);
@@ -32,8 +38,5 @@ export async function csrfFetch(url, options = {}) {
 
 export function restoreCSRF() {
   return csrfFetch('/api/csrf/restore').then(res => {
-    const csrfToken = Cookies.get('_csrf');
-    console.log('CSRF Token from initial:', csrfToken)
-    Cookies.set('XSRF-TOKEN', csrfToken);
   });
 }

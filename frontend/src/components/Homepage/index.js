@@ -55,7 +55,7 @@ function FrontPage() {
                         <li className="content__container__list__item">Anywhere</li>
                         <li className="content__container__list__item">In Space</li>
                         <li className="content__container__list__item">On a date</li>
-                        <li className="content__container__list__item"></li>
+                        <li className="content__container__list__item">Alone</li>
                     </ul>
                 </div>
             </div>
