@@ -4,8 +4,12 @@ const { User } = require('../db/models');
 
 const { secret, expiresIn } = jwtConfig;
 
-const setTokenCookie = (res, user) => {
+
+
+const setTokenCookie = (req, res, user) => {
     // Create the token.
+
+    console.log('setTokenCookie from auth.js')
     const token = jwt.sign(
         { data: user.toSafeObject() },
         secret,
@@ -18,6 +22,15 @@ const setTokenCookie = (res, user) => {
     res.cookie('token', token, {
         maxAge: expiresIn * 1000, // maxAge in milliseconds
         httpOnly: true,
+        secure: isProduction,
+        sameSite: isProduction && "Lax",
+    });
+
+    // Set the XSRF-TOKEN cookie
+    const csrfToken = req.csrfToken();
+    res.cookie('XSRF-TOKEN', csrfToken, {
+        maxAge: expiresIn * 1000, // maxAge in milliseconds
+        httpOnly: false,
         secure: isProduction,
         sameSite: isProduction && "Lax",
     });

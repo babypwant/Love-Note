@@ -16,6 +16,7 @@ router.use('/notes', notesRouter)
 
 router.get('/csrf/restore', (req, res) => {
     const csrfToken = req.csrfToken();
+    console.log('index.js/api', csrfToken)
     res.cookie('XSRF-TOKEN', csrfToken, { httpOnly: false });
     res.status(200).json({ csrfToken });
     console.log('csrfToken', csrfToken);

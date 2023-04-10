@@ -18,21 +18,22 @@ function FrontPage() {
     const history = useHistory();
 
     const demoUserSignIn = (e) => {
-        e.preventDefault()
-        const credential = 'demo'
-        const password = 'password'
-        history.push('/home')
+        e.preventDefault();
+        const credential = 'demo';
+        const password = 'password';
+      
+        history.push('/home');
         return dispatch(sessionActions.login({ credential, password }))
-            .catch(async (res) => {
-                const contentType = res.headers.get('Content-Type');
-                if (contentType && contentType.includes('application/json')) {
-                    const data = await res.json();
-                    return data;
-                } else {
-                    throw new Error('Invalid JSON response');
-                }
-            });
-    }
+          .catch(async (res) => {
+            const contentType = res.headers.get('Content-Type');
+            if (contentType && contentType.includes('application/json')) {
+              const data = await res.json();
+              return data;
+            } else {
+              throw new Error('Invalid JSON response');
+            }
+          });
+      };
     
 
     const login = (e) => {

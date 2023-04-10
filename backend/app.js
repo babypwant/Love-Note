@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const csurf = require('csurf');
+const csrf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { ValidationError } = require('sequelize');
@@ -16,21 +16,27 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
 if (!isProduction) {
-    app.use(cors({ origin: '*', credentials: true }));
+    app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 }
 app.use(helmet({
     contentSecurityPolicy: false
 }));
-app.use(
-    csurf({
-      cookie: {
-        name: 'XSRF-TOKEN', // Add this line to set the cookie name
-        secure: isProduction,
-        sameSite: isProduction ? "Lax" : false, // Corrected this line
-        httpOnly: true,
-      },
-    })
-  );
+
+
+const csrfProtection = csrf({
+    cookie: {
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      httpOnly: true,
+    },
+  });
+  
+  app.use((req, res, next) => {
+    if (req.path === '/api/csrf/restore') {
+      return next();
+    }
+    csrfProtection(req, res, next);
+  });
 
 app.use(routes);
 

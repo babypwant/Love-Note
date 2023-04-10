@@ -36,6 +36,7 @@ const csrfProtection = csrf({ cookie: true });
 
 router.get('/restore', (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken());
+    console.log('in get /restore', req.csrfToken())
     return res.json({ csrfToken: req.csrfToken() });
   });
 
@@ -46,6 +47,7 @@ if (process.env.NODE_ENV !== 'production') {
         res.cookie('XSRF-TOKEN', token, { httpOnly: false, secure: false });
         console.log('Landing page token', token);
         res.status(201).json({});
+        console.log(res)
     });
 }
 
