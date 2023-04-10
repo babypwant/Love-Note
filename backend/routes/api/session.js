@@ -48,6 +48,7 @@ router.post(
 
         await setTokenCookie(res, user);
 
+        console.log('set user /session', user)
         return res.json({
             user,
         });

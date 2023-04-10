@@ -16,7 +16,7 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
 if (!isProduction) {
-    app.use(cors());
+    app.use(cors({ origin: '*', credentials: true }));
 }
 app.use(helmet({
     contentSecurityPolicy: false

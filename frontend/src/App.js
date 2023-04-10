@@ -20,10 +20,10 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    restoreCSRF();
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    restoreCSRF().then(() => {
+        dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    });
 }, [dispatch]);
-
 
   return (
     <>
