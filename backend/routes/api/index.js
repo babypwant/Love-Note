@@ -14,6 +14,11 @@ router.use('/users', usersRouter);
 router.use('/notebooks', noteBookRouter)
 router.use('/notes', notesRouter)
 
+router.get('/csrf/restore', (req, res) => {
+    const csrfToken = req.csrfToken();
+    res.cookie('XSRF-TOKEN', csrfToken);
+    res.status(200).json({ csrfToken });
+  });
 
 //TEST ROUTES FOR AUTH USER, RESTORE USER, & REQIUIRE AUTH
 router.get('/set-token-cookie', asyncHandler(async (req, res) => {

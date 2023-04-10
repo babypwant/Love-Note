@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getNotebooks, notebookDelete } from '../../store/notebooks'
+import { getNotebooks } from '../../store/notebooks'
 import { useHistory } from 'react-router-dom'
 import './home.scss'
 
@@ -11,9 +11,6 @@ function Home() {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
     const [userId, setUser] = useState(0)
-    const useNotebooks = notebookDelete
-    const notebook_type = typeof(useNotebooks)
-    console.log(notebook_type)
 
 
 

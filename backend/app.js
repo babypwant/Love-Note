@@ -23,13 +23,14 @@ app.use(helmet({
 }));
 app.use(
     csurf({
-        cookie: {
-            secure: isProduction,
-            sameSite: isProduction && "Lax",
-            httpOnly: true,
-        },
+      cookie: {
+        name: 'XSRF-TOKEN', // Add this line to set the cookie name
+        secure: isProduction,
+        sameSite: isProduction ? "Lax" : false, // Corrected this line
+        httpOnly: true,
+      },
     })
-);
+  );
 
 app.use(routes);
 

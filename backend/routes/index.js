@@ -2,8 +2,12 @@ const express = require('express');
 const router = express.Router();
 const apiRouter = require('./api');
 const csrf = require('csurf');
+require('dotenv').config()
+
 
 router.use('/api', apiRouter);
+
+
 
 // Static routes
 // Serve React build files in production
@@ -29,6 +33,11 @@ if (process.env.NODE_ENV === 'production') {
 
 // CSRF middleware
 const csrfProtection = csrf({ cookie: true });
+
+router.get('/restore', (req, res) => {
+    res.cookie('XSRF-TOKEN', req.csrfToken());
+    return res.json({ csrfToken: req.csrfToken() });
+  });
 
 // Add a _csrf cookie in development
 if (process.env.NODE_ENV !== 'production') {
