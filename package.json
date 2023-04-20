@@ -1,0 +1,11 @@
+{
+    "name": "lovenote-aa",
+    "version": "1.0.0",
+    "scripts": {
+      "start": "npm run start:development --prefix backend"
+    },
+    "engines": {
+      "node": "18.x"
+    }
+  }
+  
