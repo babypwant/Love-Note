@@ -7,13 +7,29 @@ const cookieParser = require('cookie-parser');
 const { ValidationError } = require('sequelize');
 const { environment } = require('./config');
 const routes = require('./routes');
+require('dotenv').config();
+
 
 const isProduction = environment === 'production';
 
 const app = express();
 
+const session = require('express-session');
+
+
 app.use(morgan('dev'));
 app.use(cookieParser());
+app.use(session({
+  secret: process.env.CSRF_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    httpOnly: true,
+  },
+}));
+
 app.use(express.json());
 if (!isProduction) {
     app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
@@ -23,15 +39,18 @@ app.use(helmet({
 }));
 
 
+const csrfSecret = process.env.CSRF_SECRET;
+console.log('csrfSecret:', csrfSecret); // logging csrfSecret to make sure it's being properly set
 const csrfProtection = csrf({
-    cookie: {
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-      httpOnly: true,
-    },
-  });
-  
-  app.use((req, res, next) => {
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    httpOnly: true,
+  },
+  secret: csrfSecret,
+});
+
+app.use((req, res, next) => {
     if (req.path === '/api/csrf/restore') {
       return next();
     }
