@@ -4,6 +4,10 @@
     "scripts": {
       "start": "npm run start:development --prefix backend"
     },
+    "dependencies": {
+        "nodemon": "^2.0.15",
+        "react-scripts": "^4.0.3"
+      },
     "engines": {
       "node": "18.x"
     }
