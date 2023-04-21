@@ -7,7 +7,8 @@ const db = require('../db/models');
 
 // Check the database connection before starting the app
 db.sequelize
-  .authenticate()
+   .sync()
+  // .authenticate()
   .then(() => {
     console.log('Database connection success! Sequelize is ready to use...');
 

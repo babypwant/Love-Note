@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const { ValidationError } = require('sequelize');
 const { environment } = require('./config');
 const routes = require('./routes');
+const path = require('path');
 require('dotenv').config();
 
 
@@ -30,7 +31,12 @@ app.use(session({
   },
 }));
 
+const buildPath = path.join(__dirname, '..', 'frontend/build');
+
+
 app.use(express.json());
+app.use(express.static(buildPath));
+
 if (!isProduction) {
     app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 }
@@ -57,7 +63,7 @@ app.use((req, res, next) => {
     csrfProtection(req, res, next);
   });
 
-app.use(routes);
+app.use("/", routes);
 
 
 
